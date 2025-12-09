@@ -142,11 +142,11 @@ Ollama was chosen for its **ease of integration**, **local execution capabilitie
 ### 4. **Shutter Optimization Agent**
 - **Goal**: Regulate natural light, privacy, and energy efficiency by adjusting shutter positions.
 - **Inputs**: Current shutter state, weather data (sunrise/sunset time, cloud cover, wind speed), power consumption, and time-of-day context.
-- **Output**:  
+- **Output** (percentage open (0–100)):
 ```json
   {
     "Shutter": {
-      "position": 77  // percentage open (0–100)
+      "position": 77
     }
   }
 ```
