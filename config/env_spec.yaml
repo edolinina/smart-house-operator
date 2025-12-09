@@ -1,0 +1,24 @@
+location:
+  latitude: 32.08
+  longitude: 34.78
+
+ac:
+  name: 'Main'
+
+lights:
+  space: 192.168.1.255
+
+shutter:
+  name: "Switcher Runner_286D"
+
+temperatures-preferences:
+  man: 22
+  woman: 25
+  kids: 24
+  dogs: 20
+
+brightness-preferences:
+  man: 6
+  woman: 2
+  kids: 8
+  dogs: 0

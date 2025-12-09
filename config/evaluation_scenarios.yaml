@@ -1,0 +1,253 @@
+locations:
+  london:
+    weather:
+      temperature: 7
+      wind-speed': 15.0
+      humidity: 40
+      cloud-cover: 94
+      sunset: '2025-12-02T17:00'
+      sunrise': '2025-12-02T07:00'
+    day_time: '2025-12-02T10:00:00'
+    currently_at_home: dogs,man,woman
+    shutter:
+      position: 30
+    lights:
+      "on": false
+      brightness: 0
+      warm: true
+    fridge:
+      cooler: 3
+      freezer: -20
+    ac:
+      temperature: 23
+      fan: low
+      mode: heat
+      "on": true
+  tel-aviv:
+    weather:
+      temperature: 30
+      wind-speed': 10.0
+      humidity: 90
+      cloud-cover: 10
+      sunset: '2025-07-02T19:00'
+      sunrise': '2025-07-02T05:00'
+    day_time: '2025-07-02T08:00:00'
+    currently_at_home: dogs,man
+    shutter:
+      position: 80
+    lights:
+      "on": false
+      brightness: 0
+      warm: false
+    fridge:
+      cooler: 4
+      freezer: -18
+    ac:
+      temperature: 24
+      fan: medium
+      mode: cool
+      "on": true
+  berlin:
+    weather:
+      temperature: 10
+      wind-speed': 20.0
+      humidity: 60
+      cloud-cover: 90
+      sunset: '2025-03-01T18:00'
+      sunrise': '2025-03-01T07:00'
+    day_time: '2025-03-01T06:00:00'
+    currently_at_home: woman,kids
+    shutter:
+      position: 50
+    lights:
+      "on": true
+      brightness: 80
+      warm: true
+    fridge:
+      cooler: 4
+      freezer: -18
+    ac:
+      temperature: 22
+      fan: high
+      mode: heat
+      "on": true
+  limassol:
+    weather:
+      temperature: 30
+      wind-speed': 5.0
+      humidity: 80
+      cloud-cover: 10
+      sunset: '2025-09-03T05:00'
+      sunrise': '2025-09-03T19:00'
+    day_time: '2025-09-03T12:00:00'
+    currently_at_home: dogs,woman,kids
+    shutter:
+      position: 70
+    lights:
+      "on": true
+      brightness: 50
+      warm: true
+    fridge:
+      cooler: 3
+      freezer: -17
+    ac:
+      temperature: 22
+      fan: low
+      mode: cool
+      "on": true
+  riga:
+    weather:
+      temperature: 10
+      wind-speed': 25.0
+      humidity: 80
+      cloud-cover: 80
+      sunset: '2025-10-03T06:00'
+      sunrise': '2025-10-03T19:00'
+    day_time: '2025-10-03T12:00:00'
+    currently_at_home: dogs,man,kids
+    shutter:
+      position: 20
+    lights:
+      "on": false
+      brightness: 0
+      warm: true
+    fridge:
+      cooler: 3
+      freezer: -17
+    ac:
+      temperature: 22
+      fan: low
+      mode: heat
+      "on": false
+  athens:
+    weather:
+      temperature: 33
+      wind-speed': 5.0
+      humidity: 80
+      cloud-cover: 10
+      sunset: '2025-05-03T05:00'
+      sunrise': '2025-05-03T19:00'
+    day_time: '2025-05-03T16:00:00'
+    currently_at_home: dogs,kids
+    shutter:
+      position: 60
+    lights:
+      "on": false
+      brightness: 0
+      warm: true
+    fridge:
+      cooler: 4
+      freezer: -20
+    ac:
+      temperature: 22
+      fan: low
+      mode: cool
+      "on": true
+  sofia:
+    weather:
+      temperature: 12
+      wind-speed': 30.0
+      humidity: 60
+      cloud-cover: 90
+      sunset: '2025-11-03T05:00'
+      sunrise': '2025-11-03T19:00'
+    day_time: '2025-11-03T18:00:00'
+    currently_at_home: dogs,man,kids
+    shutter:
+      position: 40
+    lights:
+      "on": true
+      brightness: 40
+      warm: false
+    fridge:
+      cooler: 4
+      freezer: -19
+    ac:
+      temperature: 24
+      fan: medium
+      mode: heat
+      "on": true
+  madrid:
+    weather:
+      temperature: 8
+      wind-speed': 20.0
+      humidity: 60
+      cloud-cover: 60
+      sunset: '2025-02-03T07:00'
+      sunrise': '2025-02-03T18:00'
+    day_time: '2025-02-03T22:00:00'
+    currently_at_home: dogs,man,woman
+    shutter:
+      position: 45
+    lights:
+      "on": true
+      brightness: 40
+      warm: false
+    fridge:
+      cooler: 4
+      freezer: -19
+    ac:
+      temperature: 24
+      fan: medium
+      mode: heat
+      "on": true
+  vienna:
+    weather:
+      temperature: 12
+      wind-speed': 24.0
+      humidity: 60
+      cloud-cover: 60
+      sunset: '2025-04-03T07:00'
+      sunrise': '2025-04-03T18:00'
+    day_time: '2025-04-03T14:00:00'
+    currently_at_home: dogs,man,kids
+    shutter:
+      position: 50
+    lights:
+      "on": false
+      brightness: 40
+      warm: false
+    fridge:
+      cooler: 4
+      freezer: -19
+    ac:
+      temperature: 24
+      fan: high
+      mode: heat
+      "on": true
+  rome:
+    weather:
+      temperature: 33
+      wind-speed': 4.0
+      humidity: 70
+      cloud-cover: 10
+      sunset: '2025-06-03T05:00'
+      sunrise': '2025-06-03T19:00'
+    day_time: '2025-06-03T11:00:00'
+    currently_at_home: dogs,woman,kids
+    shutter:
+      position: 60
+    lights:
+      "on": true
+      brightness: 20
+      warm: true
+    fridge:
+      cooler: 4
+      freezer: -19
+    ac:
+      temperature: 22
+      fan: high
+      mode: cool
+      "on": true
+
+temperatures-preferences:
+  man: 22
+  woman: 25
+  kids: 24
+  dogs: 20
+
+brightness-preferences:
+  man: 6
+  woman: 2
+  kids: 8
+  dogs: 0

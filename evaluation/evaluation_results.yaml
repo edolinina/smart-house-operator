@@ -1,0 +1,1772 @@
+---
+input:
+  PowerConsumption:
+    level: Normal
+    watt: 1200
+  Weather:
+    temperature: 7
+    wind-speed': 15.0
+    humidity: 40
+    cloud-cover: 94
+    sunset: 2025-12-02T17:00
+    sunrise': 2025-12-02T07:00
+  DayTime: '2025-12-02T10:00:00'
+  Shutter:
+    position: 30
+  Lights:
+    'on': false
+    brightness: 0
+    warm: true
+  Fridge:
+    cooler: 3
+    freezer: -20
+  AC:
+    temperature: 23
+    fan: low
+    mode: heat
+    'on': true
+  CurrentlyHome: man,dogs,woman
+output:
+  crewai:
+    output: "{\n  \"AC\": {\"on\": true, \"temperature\": 24, \"fan\": \"low\", \"\
+      mode\": \"cool\"},\n  \"Lights\": {\"on\": false, \"brightness\": 0, \"warm\"\
+      : true},\n  \"Fridge\": {\"cooler\": 4, \"freezer\": -18},\n  \"Shutter\": {\"\
+      position\": 80},\n  \"Explanation\": \"Assuming normal load and daytime conditions;\
+      \ AC set to summer cooling setpoint 24\xB0C, mode cool, fan low; lights remain\
+      \ off; shutters kept open at 80% per daytime routine; fridge unchanged.\"\n}"
+    response-time: 198.26
+    personalization-score: 6
+    contextual-score: 9
+    interpretability-score: 7
+  agno:
+    output: "I\u2019m not sure what the current conditions are or which agents you\u2019\
+      d like me to pull information from. Could you provide the relevant data or specify\
+      \ which agents\u2019 outputs should be combined?"
+    response-time: 6.85
+    personalization-score: 0
+    contextual-score: 0
+    interpretability-score: 0
+  langgraph:
+    output: "{\n  \"AC\": {\"on\": true, \"temperature\": 24, \"fan\": \"low\", \"\
+      mode\": \"heat\"},\n  \"Lights\": {\"on\": true, \"brightness\": 50, \"warm\"\
+      : false},\n  \"Fridge\": {\"cooler\": 4, \"freezer\": -18},\n  \"Shutter\":\
+      \ {\"position\": 80},\n  \"Explanation\": \"AC set to 24\xB0C to increase heating\
+      \ priority due to high cloud cover and low outside temperature; lights turned\
+      \ on at 50% brightness to match average preference and because cloud cover is\
+      \ high; fridge and freezer set to default temperatures for low outside temperature;\
+      \ shutters opened wider to improve natural lighting.\",\n  \"Alert\": {\"level\"\
+      : \"warning\", \"message\": \"No alerts.\"}\n}"
+    response-time: 47.06
+    personalization-score: 9
+    contextual-score: 7
+    interpretability-score: 10
+---
+input:
+  PowerConsumption:
+    level: Normal
+    watt: 1200
+  Weather:
+    temperature: 30
+    wind-speed': 10.0
+    humidity: 90
+    cloud-cover: 10
+    sunset: 2025-07-02T19:00
+    sunrise': 2025-07-02T05:00
+  DayTime: '2025-07-02T08:00:00'
+  Shutter:
+    position: 80
+  Lights:
+    'on': false
+    brightness: 0
+    warm: false
+  Fridge:
+    cooler: 4
+    freezer: -18
+  AC:
+    temperature: 22
+    fan: medium
+    mode: cool
+    'on': true
+  CurrentlyHome: man,dogs
+output:
+  crewai:
+    output: "{\n  \"AC\": {\n    \"on\": true,\n    \"temperature\": 23,\n    \"fan\"\
+      : \"medium\",\n    \"mode\": \"cool\"\n  },\n  \"Lights\": {\n    \"on\": false,\n\
+      \    \"brightness\": 0,\n    \"warm\": false\n  },\n  \"Fridge\": {\n    \"\
+      cooler\": 4,\n    \"freezer\": -18\n  },\n  \"Shutter\": {\n    \"position\"\
+      : 80\n  },\n  \"Explanation\": \"No adjustments required: AC setpoint is within\
+      \ comfortable range, lights are off as per daytime policy, shutters remain open\
+      \ at 80% to allow natural light, and fridge/freezer temperatures are at standard\
+      \ values. Power consumption is below critical thresholds, so no alert is issued.\"\
+      \n}"
+    response-time: 200.91
+    personalization-score: null
+    contextual-score: null
+    interpretability-score: 10
+  agno:
+    output: "{\n  \"AC\": {\"on\": true, \"temperature\": 23, \"fan\": \"medium\"\
+      , \"mode\": \"cool\"},\n  \"Lights\": {\"on\": false, \"brightness\": 0, \"\
+      warm\": false},\n  \"Fridge\": {\"cooler\": 4, \"freezer\": -18},\n  \"Shutter\"\
+      : {\"position\": 80},\n  \"Explanation\": {\"text\":\"AC set to 23\xB0C due\
+      \ to high humidity (>70%) reducing comfort temperature by 1\xB0C; lights remain\
+      \ off as daylight is bright and cloud cover is low; fridge and freezer stay\
+      \ at standard temperatures because outside temperature is 30\xB0C; shutters\
+      \ keep 80% open for privacy and heat retention.\"}\n}"
+    response-time: 63.14
+    personalization-score: 8
+    contextual-score: 9
+    interpretability-score: 10
+  langgraph:
+    output: "{\n  \"AC\": {\"on\": true, \"temperature\": 23, \"fan\": \"medium\"\
+      , \"mode\": \"cool\"},\n  \"Lights\": {\"on\": false, \"brightness\": 0, \"\
+      warm\": false},\n  \"Fridge\": {\"cooler\": 4, \"freezer\": -18},\n  \"Shutter\"\
+      : {\"position\": 80},\n  \"Explanation\": \"AC setpoint lowered to 23\xB0C because\
+      \ humidity is 90% (>70%), which requires a 1\xB0C reduction for comfort. Lights\
+      \ are turned off during daylight hours (after sunrise +1h until sunset \u2013\
+      1h) with low cloud cover (10%). Fridge and freezer temperatures remain at 4\xB0\
+      C and -18\xB0C since the outside temperature (30\xB0C) does not exceed 30\xB0\
+      C. Shutters stay at 80% open to allow natural light while wind speed is low.\"\
+      \n}"
+    response-time: 63.11
+    personalization-score: 8
+    contextual-score: 10
+    interpretability-score: 10
+---
+input:
+  PowerConsumption:
+    level: Normal
+    watt: 1200
+  Weather:
+    temperature: 10
+    wind-speed': 20.0
+    humidity: 60
+    cloud-cover: 90
+    sunset: 2025-03-01T18:00
+    sunrise': 2025-03-01T07:00
+  DayTime: '2025-03-01T06:00:00'
+  Shutter:
+    position: 50
+  Lights:
+    'on': true
+    brightness: 80
+    warm: true
+  Fridge:
+    cooler: 4
+    freezer: -18
+  AC:
+    temperature: 22
+    fan: high
+    mode: heat
+    'on': true
+  CurrentlyHome: woman,kids
+output:
+  crewai:
+    output: "{\n  \"AC\": {\n    \"on\": true,\n    \"temperature\": 22,\n    \"fan\"\
+      : \"high\",\n    \"mode\": \"heat\"\n  },\n  \"Lights\": {\n    \"on\": true,\n\
+      \    \"brightness\": 40,\n    \"warm\": false\n  },\n  \"Fridge\": {\n    \"\
+      cooler\": 4,\n    \"freezer\": -18\n  },\n  \"Shutter\": {\n    \"position\"\
+      : 0\n  },\n  \"Explanation\": \"Applied moderate load response: dimmed lights\
+      \ by 30% (57 \u2192 40), adjusted AC setpoint by -1\xB0C (23 \u2192 22) for\
+      \ energy savings while maintaining comfort. No changes to fridge or shutters\
+      \ were needed.\"\n}"
+    response-time: 190.63
+    personalization-score: 5
+    contextual-score: 7
+    interpretability-score: 6
+  agno:
+    output: "{\n  \"AC\": {\n    \"on\": true,\n    \"temperature\": 23,\n    \"fan\"\
+      : \"high\",\n    \"mode\": \"heat\"\n  },\n  \"Lights\": {\n    \"on\": true,\n\
+      \    \"brightness\": 30,\n    \"warm\": false\n  },\n  \"Fridge\": {\n    \"\
+      cooler\": 4,\n    \"freezer\": -18\n  },\n  \"Shutter\": {\n    \"position\"\
+      : 50\n  },\n  \"Explanation\": {\n    \"text\": \"AC set to heating mode at\
+      \ 23\xB0C following winter guidelines, lights dimmed to 30% cold light for morning,\
+      \ shutters stay at 50% due to cloud cover and wind conditions.\"\n  }\n}"
+    response-time: 153.12
+    personalization-score: 6
+    contextual-score: 8
+    interpretability-score: 8
+  langgraph:
+    output: "{\n  \"AC\": {\"on\": true, \"temperature\": 23, \"fan\": \"high\", \"\
+      mode\": \"heat\"},\n  \"Lights\": {\"on\": true, \"brightness\": 90, \"warm\"\
+      : false},\n  \"Fridge\": {\"cooler\": 4, \"freezer\": -18},\n  \"Shutter\":\
+      \ {\"position\": 80},\n  \"Explanation\": \"AC set to heating mode with 23\xB0\
+      C per winter guideline; fan remains high as humidity is below 30%. Lights switched\
+      \ to cold mode (warm=false) for morning, brightness increased to 90 to simulate\
+      \ sunrise. Shutters opened wider to 80% due to high cloud cover (>65%) and upcoming\
+      \ sunrise. Fridge and freezer temperatures kept at 4\xB0C and -18\xB0C because\
+      \ outside temperature is below 30\xB0C.\",\n  \"Alert\": {}\n}"
+    response-time: 37.55
+    personalization-score: 7
+    contextual-score: 8
+    interpretability-score: 10
+---
+input:
+  PowerConsumption:
+    level: Normal
+    watt: 1200
+  Weather:
+    temperature: 30
+    wind-speed': 5.0
+    humidity: 80
+    cloud-cover: 10
+    sunset: 2025-09-03T05:00
+    sunrise': 2025-09-03T19:00
+  DayTime: '2025-09-03T12:00:00'
+  Shutter:
+    position: 70
+  Lights:
+    'on': true
+    brightness: 50
+    warm: true
+  Fridge:
+    cooler: 3
+    freezer: -17
+  AC:
+    temperature: 22
+    fan: low
+    mode: cool
+    'on': true
+  CurrentlyHome: dogs,woman,kids
+output:
+  crewai:
+    output: "{\n  \"AC\": {\n    \"on\": true,\n    \"temperature\": 23,\n    \"fan\"\
+      : \"low\",\n    \"mode\": \"cool\"\n  },\n  \"Lights\": {\n    \"on\": false,\n\
+      \    \"brightness\": 0,\n    \"warm\": false\n  },\n  \"Fridge\": {\n    \"\
+      cooler\": 4,\n    \"freezer\": -18\n  },\n  \"Shutter\": {\n    \"position\"\
+      : 70\n  },\n  \"Explanation\": \"AC stays at 23\u202F\xB0C cool mode with low\
+      \ fan as no temperature or wind conditions trigger a change. Lights remain off\
+      \ per daytime rule. Shutter stays at 70\u202F% open because no strong wind or\
+      \ intense sunlight is detected. Fridge and freezer keep standard settings of\
+      \ 4\u202F\xB0C and \u201318\u202F\xB0C.\",\n  \"Alert\": {\n    \"level\": \"\
+      warning\",\n    \"message\": \"No critical issues detected.\"\n  }\n}"
+    response-time: 204.58
+    personalization-score: 8
+    contextual-score: 8
+    interpretability-score: 10
+  agno:
+    output: "{\"AC\":{\"on\":true,\"temperature\":23,\"fan\":\"low\",\"mode\":\"cool\"\
+      },\"Lights\":{\"on\":false,\"brightness\":0,\"warm\":false},\"Fridge\":{\"cooler\"\
+      :3,\"freezer\":-20},\"Shutter\":{\"position\":70},\"Explanation\":\"AC set to\
+      \ 23\xB0C cooling to meet summer guidelines and high humidity adjustment, lights\
+      \ turned off during bright daytime hours per cloud cover, fridge set to 3\xB0\
+      C and freezer to -20\xB0C for high outside temperature, shutters remain at 70%\
+      \ as per normal wind and daylight conditions.\",\"Alert\":null}"
+    response-time: 72.62
+    personalization-score: 8
+    contextual-score: 8
+    interpretability-score: 9
+  langgraph:
+    output: "{\n  \"AC\": {\"on\": true, \"temperature\": 23, \"fan\": \"low\", \"\
+      mode\": \"cool\"},\n  \"Lights\": {\"on\": false, \"brightness\": 0, \"warm\"\
+      : false},\n  \"Fridge\": {\"cooler\": 4, \"freezer\": -18},\n  \"Shutter\":\
+      \ {\"position\": 80},\n  \"Explanation\": \"AC set to 23\xB0C due to high humidity;\
+      \ lights turned off during bright daytime; fridge set to 4\xB0C/\u201318\xB0\
+      C as outside temperature is not >30\xB0C; shutters opened to 80% for natural\
+      \ light.\"\n}"
+    response-time: 35.12
+    personalization-score: 8
+    contextual-score: 8
+    interpretability-score: 8
+---
+input:
+  PowerConsumption:
+    level: Normal
+    watt: 1200
+  Weather:
+    temperature: 10
+    wind-speed': 25.0
+    humidity: 80
+    cloud-cover: 80
+    sunset: 2025-10-03T06:00
+    sunrise': 2025-10-03T19:00
+  DayTime: '2025-10-03T12:00:00'
+  Shutter:
+    position: 20
+  Lights:
+    'on': false
+    brightness: 0
+    warm: true
+  Fridge:
+    cooler: 3
+    freezer: -17
+  AC:
+    temperature: 22
+    fan: low
+    mode: heat
+    'on': false
+  CurrentlyHome: man,dogs,kids
+output:
+  crewai:
+    output: "{\n  \"AC\": {\n    \"on\": true,\n    \"temperature\": 22,\n    \"fan\"\
+      : \"low\",\n    \"mode\": \"heat\"\n  },\n  \"Lights\": {\n    \"on\": false,\n\
+      \    \"brightness\": 0,\n    \"warm\": true\n  },\n  \"Fridge\": {\n    \"cooler\"\
+      : 4,\n    \"freezer\": -18\n  },\n  \"Shutter\": {\n    \"position\": 80\n \
+      \ },\n  \"Explanation\": {\n    \"text\": \"All devices remain in their current\
+      \ state as they comply with the time\u2011of\u2011day and environmental rules.\
+      \ The AC is set to heat at 22\u202F\xB0C, appropriate for a winter scenario;\
+      \ lights are off during daytime/nighttime; shutters are open at 80\u202F% to\
+      \ allow daylight; fridge and freezer temperatures are standard.\"\n  },\n  \"\
+      Alert\": {\n    \"level\": \"warning\",\n    \"message\": \"No alerts\"\n  }\n\
+      }"
+    response-time: 221.29
+    personalization-score: 9
+    contextual-score: 9
+    interpretability-score: 8
+  agno:
+    output: "{\"AC\":{\"on\":true,\"temperature\":23,\"fan\":\"low\",\"mode\":\"heat\"\
+      },\"Lights\":{\"on\":false,\"brightness\":0,\"warm\":true},\"Fridge\":{\"cooler\"\
+      :4,\"freezer\":-18},\"Shutter\":{\"position\":80},\"Explanation\":\"AC is switched\
+      \ on to heat at 23\xB0C to keep indoor temperature near the weighted average\
+      \ 22.8\xB0C, lights remain off during bright daylight, fridge and freezer set\
+      \ to winter defaults, and shutters opened to 80% to maximize natural light while\
+      \ wind speed is moderate.\"}"
+    response-time: 73.09
+    personalization-score: 7
+    contextual-score: 8
+    interpretability-score: 7
+  langgraph:
+    output: "{\n  \"AC\": {\"on\": false, \"temperature\": 22, \"fan\": \"low\", \"\
+      mode\": \"heat\"},\n  \"Lights\": {\"on\": false, \"brightness\": 0, \"warm\"\
+      : true},\n  \"Fridge\": {\"cooler\": 4, \"freezer\": -18},\n  \"Shutter\": {\"\
+      position\": 80},\n  \"Explanation\": \"AC remains off as October is outside\
+      \ summer/winter windows and weather conditions do not trigger heating. Lights\
+      \ are off due to bright daytime and cloud cover <90%. Fridge temperature adjusted\
+      \ to 4\xB0C and freezer to -18\xB0C because outside temp <30\xB0C. Shutters\
+      \ opened to 80% to maximize natural light given high cloud cover and moderate\
+      \ wind speed.\"\n}"
+    response-time: 48.76
+    personalization-score: 5
+    contextual-score: 5
+    interpretability-score: 9
+---
+input:
+  PowerConsumption:
+    level: Normal
+    watt: 1200
+  Weather:
+    temperature: 33
+    wind-speed': 5.0
+    humidity: 80
+    cloud-cover: 10
+    sunset: 2025-05-03T05:00
+    sunrise': 2025-05-03T19:00
+  DayTime: '2025-05-03T16:00:00'
+  Shutter:
+    position: 60
+  Lights:
+    'on': false
+    brightness: 0
+    warm: true
+  Fridge:
+    cooler: 4
+    freezer: -20
+  AC:
+    temperature: 22
+    fan: low
+    mode: cool
+    'on': true
+  CurrentlyHome: dogs,kids
+output:
+  crewai:
+    output: "{\n  \"AC\": {\n    \"on\": true,\n    \"temperature\": 23,\n    \"fan\"\
+      : \"low\",\n    \"mode\": \"cool\"\n  },\n  \"Lights\": {\n    \"on\": false,\n\
+      \    \"brightness\": 0,\n    \"warm\": true\n  },\n  \"Fridge\": {\n    \"cooler\"\
+      : 3,\n    \"freezer\": -20\n  },\n  \"Shutter\": {\n    \"position\": 60\n \
+      \ },\n  \"Explanation\": \"Current settings already meet comfort and energy\u2011\
+      efficiency guidelines; no changes needed.\"\n}"
+    response-time: 175.37
+    personalization-score: 6
+    contextual-score: 6
+    interpretability-score: 6
+  agno:
+    output: "{\n  \"AC\": {\"on\": true, \"temperature\": 23, \"fan\": \"low\", \"\
+      mode\": \"cool\"},\n  \"Lights\": {\"on\": false, \"brightness\": 0, \"warm\"\
+      : false},\n  \"Fridge\": {\"cooler\": 3, \"freezer\": -20},\n  \"Shutter\":\
+      \ {\"position\": 60},\n  \"Explanation\": \"AC temperature adjusted to 23\u202F\
+      \xB0C due to high humidity (reduces setpoint by 1\u202F\xB0C) while maintaining\
+      \ cool mode for summer; lights remain off as daylight hours are within bright\
+      \ period; fridge cooler lowered to 3\u202F\xB0C for hot outside temperature;\
+      \ shutters stay at 60\u202F% as wind speed and cloud cover do not require adjustment.\"\
+      ,\n  \"Alert\": null\n}"
+    response-time: 85.88
+    personalization-score: 8
+    contextual-score: 9
+    interpretability-score: 10
+  langgraph:
+    output: "{\n  \"AC\": {\"on\": true, \"temperature\": 23, \"fan\": \"low\", \"\
+      mode\": \"cool\"},\n  \"Lights\": {\"on\": false, \"brightness\": 0, \"warm\"\
+      : true},\n  \"Fridge\": {\"cooler\": 3, \"freezer\": -20},\n  \"Shutter\": {\"\
+      position\": 60},\n  \"Explanation\": \"AC set to 23\xB0C due to high humidity\
+      \ and summer season; lights remain off during daylight; fridge cooler lowered\
+      \ to 3\xB0C because outside >30\xB0C; shutters unchanged at 60% open.\"\n}"
+    response-time: 37.53
+    personalization-score: 8
+    contextual-score: 9
+    interpretability-score: 8
+---
+input:
+  PowerConsumption:
+    level: Normal
+    watt: 1200
+  Weather:
+    temperature: 8
+    wind-speed': 20.0
+    humidity: 60
+    cloud-cover: 60
+    sunset: 2025-02-03T07:00
+    sunrise': 2025-02-03T18:00
+  DayTime: '2025-02-03T22:00:00'
+  Shutter:
+    position: 45
+  Lights:
+    'on': true
+    brightness: 40
+    warm: false
+  Fridge:
+    cooler: 4
+    freezer: -19
+  AC:
+    temperature: 24
+    fan: medium
+    mode: heat
+    'on': true
+  CurrentlyHome: man,dogs,woman
+output:
+  crewai:
+    output: "{\n  \"AC\": {\"on\": true, \"temperature\": 23, \"fan\": \"medium\"\
+      , \"mode\": \"heat\"},\n  \"Lights\": {\"on\": true, \"brightness\": 26, \"\
+      warm\": true},\n  \"Fridge\": {\"cooler\": 4, \"freezer\": -18},\n  \"Shutter\"\
+      : {\"position\": 90},\n  \"Explanation\": \"Current settings are within recommended\
+      \ ranges; no adjustments needed.\",\n  \"Alert\": {\"level\": \"warning\", \"\
+      message\": \"No alerts.\"}\n}"
+    response-time: 249.42
+    personalization-score: 6
+    contextual-score: 6
+    interpretability-score: 6
+  agno:
+    output: "{\n  \"AC\": {\"on\": true, \"temperature\": 23, \"fan\": \"medium\"\
+      , \"mode\": \"heat\"},\n  \"Lights\": {\"on\": true, \"brightness\": 50, \"\
+      warm\": true},\n  \"Fridge\": {\"cooler\": 4, \"freezer\": -18},\n  \"Shutter\"\
+      : {\"position\": 100},\n  \"Explanation\": \"AC set to heating at 23\u202F\xB0\
+      C following winter guidelines, as outside temperature is low and no wind\u2011\
+      based overrides apply. Lights are on at 50\u202F% brightness with warm light\
+      \ suitable for the late\u2011evening period. Fridge temperature remains at 4\u202F\
+      \xB0C and freezer at \u201318\u202F\xB0C because the outside temperature is\
+      \ below 30\u202F\xB0C. Shutters are fully closed (100\u202F%) to retain indoor\
+      \ heat after sunset.\"\n}"
+    response-time: 70.26
+    personalization-score: 5
+    contextual-score: 5
+    interpretability-score: 10
+  langgraph:
+    output: "{\n  \"AC\": {\"on\": true, \"temperature\": 23, \"fan\": \"medium\"\
+      , \"mode\": \"heat\"},\n  \"Lights\": {\"on\": true, \"brightness\": 50, \"\
+      warm\": false},\n  \"Fridge\": {\"cooler\": 4, \"freezer\": -18},\n  \"Shutter\"\
+      : {\"position\": 90},\n  \"Explanation\": \"Winter heating mode set to 23\xB0\
+      C, fan remains medium. Lights dimmed to 50% after 21:00. Fridge cooler kept\
+      \ at 4\xB0C, freezer at -18\xB0C. Shutters closed to 90% for night privacy.\"\
+      \n}"
+    response-time: 33.07
+    personalization-score: 7
+    contextual-score: 7
+    interpretability-score: 8
+---
+input:
+  PowerConsumption:
+    level: Normal
+    watt: 1200
+  Weather:
+    temperature: 12
+    wind-speed': 24.0
+    humidity: 60
+    cloud-cover: 60
+    sunset: 2025-04-03T07:00
+    sunrise': 2025-04-03T18:00
+  DayTime: '2025-04-03T14:00:00'
+  Shutter:
+    position: 50
+  Lights:
+    'on': false
+    brightness: 40
+    warm: false
+  Fridge:
+    cooler: 4
+    freezer: -19
+  AC:
+    temperature: 24
+    fan: high
+    mode: heat
+    'on': true
+  CurrentlyHome: man,dogs,kids
+output:
+  crewai:
+    output: "{\n  \"AC\": {\"on\": true, \"temperature\": 22, \"fan\": \"high\", \"\
+      mode\": \"heat\"},\n  \"Lights\": {\"on\": false, \"brightness\": 0, \"warm\"\
+      : false},\n  \"Fridge\": {\"cooler\": 4, \"freezer\": -18},\n  \"Shutter\":\
+      \ {\"position\": 80},\n  \"Explanation\": {\"text\":\"Maintained current settings\
+      \ as all parameters are within recommended ranges. AC set to 22\xB0C heat mode\
+      \ with high fan for comfort; lights remain off to save energy; fridge at 4\xB0\
+      C and freezer at -18\xB0C for optimal preservation; shutters at 80% open to\
+      \ allow natural light during daytime.\"}\n}"
+    response-time: 185.16
+    personalization-score: 6
+    contextual-score: 9
+    interpretability-score: 10
+  agno:
+    output: "{\"AC\":{\"on\":true,\"temperature\":23,\"fan\":\"low\",\"mode\":\"heat\"\
+      },\"Lights\":{\"on\":false,\"brightness\":0,\"warm\":false},\"Fridge\":{\"cooler\"\
+      :4,\"freezer\":-18},\"Shutter\":{\"position\":70},\"Explanation\":{\"text\"\
+      :\"AC heating set to 23\u202F\xB0C with low fan to satisfy weighted persona\
+      \ preferences while maintaining normal power level. Lights are off during bright\
+      \ daylight; fridge set to 4\u202F\xB0C and freezer to \u201118\u202F\xB0C as\
+      \ outside temperature is below 30\u202F\xB0C; shutters opened to 70\u202F% to\
+      \ provide natural light without excessive wind influence.\"},\"Alert\":{}}\n"
+    response-time: 163.93
+    personalization-score: 9
+    contextual-score: 9
+    interpretability-score: 10
+  langgraph:
+    output: "{\n  \"AC\": {\n    \"on\": true,\n    \"temperature\": 24,\n    \"fan\"\
+      : \"high\",\n    \"mode\": \"heat\"\n  },\n  \"Lights\": {\n    \"on\": true,\n\
+      \    \"brightness\": 60,\n    \"warm\": false\n  },\n  \"Fridge\": {\n    \"\
+      cooler\": 4,\n    \"freezer\": -18\n  },\n  \"Shutter\": {\n    \"position\"\
+      : 50\n  },\n  \"Explanation\": \"AC remains on heating at 24\xB0C with high\
+      \ fan as no guideline triggers a change. Lights are turned on at 60% brightness\
+      \ (cold light) because it is before sunrise and not bright daylight; brightness\
+      \ chosen to match the highest average preference across occupants. Fridge cooler\
+      \ stays at 4\xB0C and freezer at -18\xB0C because outside temperature is below\
+      \ 30\xB0C. Shutter position remains at 50% as wind speed is below 30 km/h and\
+      \ cloud cover is below 65%. No alerts are needed.\",\n  \"Alert\": {\n    \"\
+      level\": \"warning\",\n    \"message\": \"None\"\n  }\n}"
+    response-time: 67.56
+    personalization-score: 6
+    contextual-score: 8
+    interpretability-score: 10
+---
+input:
+  PowerConsumption:
+    level: Normal
+    watt: 1200
+  Weather:
+    temperature: 33
+    wind-speed': 4.0
+    humidity: 70
+    cloud-cover: 10
+    sunset: 2025-06-03T05:00
+    sunrise': 2025-06-03T19:00
+  DayTime: '2025-06-03T11:00:00'
+  Shutter:
+    position: 60
+  Lights:
+    'on': true
+    brightness: 20
+    warm: true
+  Fridge:
+    cooler: 4
+    freezer: -19
+  AC:
+    temperature: 22
+    fan: high
+    mode: cool
+    'on': true
+  CurrentlyHome: dogs,woman,kids
+output:
+  crewai:
+    output: "{\n  \"AC\": {\"on\": true, \"temperature\": 24, \"fan\": \"high\", \"\
+      mode\": \"cool\"},\n  \"Lights\": {\"on\": true, \"brightness\": 53, \"warm\"\
+      : true},\n  \"Fridge\": {\"cooler\": 3, \"freezer\": -20},\n  \"Shutter\": {\"\
+      position\": 80},\n  \"Explanation\": \"Maintained current settings as no conflicting\
+      \ conditions or thresholds were detected. AC remains on at 24\xB0C with high\
+      \ fan for cooling, lights are on at 53% brightness with warm setting, fridge\
+      \ cooler at 3\xB0C and freezer at -20\xB0C, shutters at 80% open.\"\n}"
+    response-time: 219.85
+    personalization-score: 6
+    contextual-score: 6
+    interpretability-score: 6
+  agno:
+    output: "{\n  \"AC\": {\n    \"on\": true,\n    \"temperature\": 24,\n    \"fan\"\
+      : \"high\",\n    \"mode\": \"cool\"\n  },\n  \"Lights\": {\n    \"on\": false,\n\
+      \    \"brightness\": 0,\n    \"warm\": false\n  },\n  \"Fridge\": {\n    \"\
+      cooler\": 3,\n    \"freezer\": -20\n  },\n  \"Shutter\": {\n    \"position\"\
+      : 0\n  },\n  \"Explanation\": \"AC set to 24\xB0C cooling with high fan for\
+      \ summer, lights off due to daylight and low cloud cover, fridge at 3\xB0C and\
+      \ freezer at -20\xB0C for high outside temperature, shutters closed to conserve\
+      \ heat.\",\n  \"Alert\": {}\n}"
+    response-time: 80.0
+    personalization-score: 7
+    contextual-score: 8
+    interpretability-score: 8
+  langgraph:
+    output: "{\n  \"AC\": {\"on\": true, \"temperature\": 24, \"fan\": \"high\", \"\
+      mode\": \"cool\"},\n  \"Lights\": {\"on\": true, \"brightness\": 60, \"warm\"\
+      : true},\n  \"Fridge\": {\"cooler\": 3, \"freezer\": -20},\n  \"Shutter\": {\"\
+      position\": 60},\n  \"Explanation\": \"AC set to summer cooling setpoint 24\xB0\
+      C, fan high. Lights brightness adjusted to 60% to balance preferences. Fridge\
+      \ cooler 3\xB0C and freezer -20\xB0C due to high outside temp. Shutter remains\
+      \ at 60% as no wind or cloud conditions require change.\"\n}"
+    response-time: 70.5
+    personalization-score: 9
+    contextual-score: 8
+    interpretability-score: 10
+---
+input:
+  PowerConsumption:
+    level: Moderate
+    watt: 2000
+  Weather:
+    temperature: 7
+    wind-speed': 15.0
+    humidity: 40
+    cloud-cover: 94
+    sunset: 2025-12-02T17:00
+    sunrise': 2025-12-02T07:00
+  DayTime: '2025-12-02T10:00:00'
+  Shutter:
+    position: 30
+  Lights:
+    'on': false
+    brightness: 0
+    warm: true
+  Fridge:
+    cooler: 3
+    freezer: -20
+  AC:
+    temperature: 23
+    fan: low
+    mode: heat
+    'on': true
+  CurrentlyHome: man,dogs,woman
+output:
+  crewai:
+    output: "{\n  \"AC\": {\n    \"on\": true,\n    \"temperature\": 22,\n    \"fan\"\
+      : \"low\",\n    \"mode\": \"heat\"\n  },\n  \"Lights\": {\n    \"on\": false,\n\
+      \    \"brightness\": 0,\n    \"warm\": true\n  },\n  \"Fridge\": {\n    \"cooler\"\
+      : 4,\n    \"freezer\": -18\n  },\n  \"Shutter\": {\n    \"position\": 80\n \
+      \ },\n  \"Explanation\": \"Current conditions are within normal operating ranges;\
+      \ AC heating at 22\xB0C is appropriate for winter, lights remain off during\
+      \ daytime/nighttime, shutters stay largely open at 80% for natural light, and\
+      \ fridge/freezer settings are standard.\"\n}"
+    response-time: 236.64
+    personalization-score: 7
+    contextual-score: 7
+    interpretability-score: 8
+  agno:
+    output: "{\n  \"AC\": {\"on\": true, \"temperature\": 23, \"fan\": \"low\", \"\
+      mode\": \"heat\"},\n  \"Lights\": {\"on\": true, \"brightness\": 49, \"warm\"\
+      : false},\n  \"Fridge\": {\"cooler\": 4, \"freezer\": -18},\n  \"Shutter\":\
+      \ {\"position\": 80},\n  \"Explanation\": \"AC heating remains at 23\u202F\xB0\
+      C with low fan to meet winter comfort and moderate power level. Lights are turned\
+      \ on at 10:00 with a baseline brightness of 70\u202F% reduced by 30\u202F% (moderate\
+      \ power consumption) to 49\u202F%, using cold light as the time is outside the\
+      \ morning/evening windows. The fridge is set to 4\u202F\xB0C and freezer to\
+      \ \u201318\u202F\xB0C as the outside temperature is below 30\u202F\xB0C. Shutters\
+      \ are opened wider to 80\u202F% to maximize natural lighting due to high cloud\
+      \ cover, with no need for draft reduction. No alerts are required.\"\n}"
+    response-time: 96.16
+    personalization-score: 8
+    contextual-score: 9
+    interpretability-score: 10
+  langgraph:
+    output: "{\n  \"AC\": {\"on\": true, \"temperature\": 23, \"fan\": \"low\", \"\
+      mode\": \"heat\"},\n  \"Lights\": {\"on\": true, \"brightness\": 34, \"warm\"\
+      : false},\n  \"Fridge\": {\"cooler\": 4, \"freezer\": -18},\n  \"Shutter\":\
+      \ {\"position\": 80},\n  \"Explanation\": \"AC heating set to 23\xB0C (winter\
+      \ target) with fan low; lights turned on at 34% brightness (30% dimming due\
+      \ to moderate power) with cold light; fridge at 4\xB0C and freezer at -18\xB0\
+      C per outside temperature; shutters opened to 80% because of high cloud cover\
+      \ (>65%) during daytime.\",\n  \"Alert\": null\n}"
+    response-time: 68.59
+    personalization-score: 8
+    contextual-score: 9
+    interpretability-score: 10
+---
+input:
+  PowerConsumption:
+    level: Moderate
+    watt: 2000
+  Weather:
+    temperature: 30
+    wind-speed': 10.0
+    humidity: 90
+    cloud-cover: 10
+    sunset: 2025-07-02T19:00
+    sunrise': 2025-07-02T05:00
+  DayTime: '2025-07-02T08:00:00'
+  Shutter:
+    position: 80
+  Lights:
+    'on': false
+    brightness: 0
+    warm: false
+  Fridge:
+    cooler: 4
+    freezer: -18
+  AC:
+    temperature: 24
+    fan: medium
+    mode: cool
+    'on': true
+  CurrentlyHome: man,dogs
+output:
+  crewai:
+    output: "{\n  \"AC\": {\"on\": true, \"temperature\": 24, \"fan\": \"medium\"\
+      , \"mode\": \"cool\"},\n  \"Lights\": {\"on\": false, \"brightness\": 0, \"\
+      warm\": false},\n  \"Fridge\": {\"cooler\": 4, \"freezer\": -18},\n  \"Shutter\"\
+      : {\"position\": 80},\n  \"Explanation\": {\"message\": \"Current settings maintained:\
+      \ AC on at 24\xB0C cool mode, lights off, fridge at 4\xB0C/\u201318\xB0C, shutters\
+      \ open at 80% per daytime routine.\"}\n}"
+    response-time: 182.0
+    personalization-score: 6
+    contextual-score: 6
+    interpretability-score: 6
+  agno:
+    output: "{\n  \"AC\": {\"on\": true, \"temperature\": 24, \"fan\": \"medium\"\
+      , \"mode\": \"cool\"},\n  \"Lights\": {\"on\": false, \"brightness\": 0, \"\
+      warm\": false},\n  \"Fridge\": {\"cooler\": 4, \"freezer\": -18},\n  \"Shutter\"\
+      : {\"position\": 80},\n  \"Explanation\": {\"explanation\":\"AC set to 24\u202F\
+      \xB0C in cool mode per summer guideline, adjusted for high humidity and moderate\
+      \ power level. Lights remain off during bright daylight. Fridge stays at 4\u202F\
+      \xB0C, freezer at \u201318\u202F\xB0C. Shutters remain at 80\u202F% open.\"\
+      }\n}"
+    response-time: 107.12
+    personalization-score: 8
+    contextual-score: 9
+    interpretability-score: 9
+  langgraph:
+    output: "{\n  \"AC\": {\"on\": true, \"temperature\": 24, \"fan\": \"medium\"\
+      , \"mode\": \"cool\"},\n  \"Lights\": {\"on\": false, \"brightness\": 0, \"\
+      warm\": false},\n  \"Fridge\": {\"cooler\": 4, \"freezer\": -18},\n  \"Shutter\"\
+      : {\"position\": 80},\n  \"Explanation\": \"AC set to 24\xB0C in cool mode with\
+      \ medium fan per summer guidelines; humidity >70% lowered target to 23\xB0C\
+      \ but moderate power level raised it back to 24\xB0C. Lights remain off during\
+      \ bright daytime hours with low cloud cover. Fridge and freezer temperatures\
+      \ stay at 4\xB0C and -18\xB0C because outside temperature does not exceed 30\xB0\
+      C. Shutters remain at 80% as wind speed is low and cloud cover is minimal.\"\
+      \n}"
+    response-time: 51.66
+    personalization-score: 8
+    contextual-score: 9
+    interpretability-score: 10
+---
+input:
+  PowerConsumption:
+    level: Moderate
+    watt: 2000
+  Weather:
+    temperature: 30
+    wind-speed': 5.0
+    humidity: 80
+    cloud-cover: 10
+    sunset: 2025-09-03T05:00
+    sunrise': 2025-09-03T19:00
+  DayTime: '2025-09-03T12:00:00'
+  Shutter:
+    position: 70
+  Lights:
+    'on': true
+    brightness: 50
+    warm: true
+  Fridge:
+    cooler: 3
+    freezer: -17
+  AC:
+    temperature: 22
+    fan: low
+    mode: cool
+    'on': true
+  CurrentlyHome: dogs,woman,kids
+output:
+  crewai:
+    output: "{\n  \"AC\": {\n    \"on\": true,\n    \"temperature\": 24,\n    \"fan\"\
+      : \"low\",\n    \"mode\": \"cool\"\n  },\n  \"Lights\": {\n    \"on\": false,\n\
+      \    \"brightness\": 0,\n    \"warm\": false\n  },\n  \"Fridge\": {\n    \"\
+      cooler\": 4,\n    \"freezer\": -18\n  },\n  \"Shutter\": {\n    \"position\"\
+      : 70\n  },\n  \"Explanation\": \"Current settings are within normal operating\
+      \ ranges and comply with the device priority hierarchy. AC is set to 24\xB0\
+      C in cool mode with low fan, lights are off to save energy, fridge and freezer\
+      \ are at recommended temperatures, and shutters are partially open for daylight.\
+      \ No alerts are triggered.\"\n}"
+    response-time: 182.93
+    personalization-score: 6
+    contextual-score: 6
+    interpretability-score: 9
+  agno:
+    output: "{\"AC\":{\"on\":true,\"temperature\":24,\"fan\":\"low\",\"mode\":\"cool\"\
+      },\"Lights\":{\"on\":true,\"brightness\":35,\"warm\":true},\"Fridge\":{\"cooler\"\
+      :4,\"freezer\":-18},\"Shutter\":{\"position\":70},\"Explanation\":\"AC set to\
+      \ 24\xB0C cool to satisfy summer guidelines and moderate power consumption;\
+      \ lights dimmed to 35% due to moderate power level and humidity; fridge set\
+      \ to 4\xB0C and freezer to -18\xB0C per outside temperature; shutters remain\
+      \ at 70%.\"}"
+    response-time: 72.39
+    personalization-score: 9
+    contextual-score: 9
+    interpretability-score: 9
+  langgraph:
+    output: "{\n  \"AC\": {\"on\": true, \"temperature\": 24, \"fan\": \"low\", \"\
+      mode\": \"cool\"},\n  \"Lights\": {\"on\": true, \"brightness\": 35, \"warm\"\
+      : true},\n  \"Fridge\": {\"cooler\": 4, \"freezer\": -18},\n  \"Shutter\": {\"\
+      position\": 70},\n  \"Explanation\": \"AC set to 24\xB0C: summer baseline 24\xB0\
+      C, +1\xB0C for moderate power, \u20131\xB0C for humidity >70%. Lights dimmed\
+      \ 30% to 35% due to moderate power consumption, warm light retained because\
+      \ humidity >75%. Fridge cooler set to 4\xB0C and freezer to \u201318\xB0C because\
+      \ outside temperature is not >30\xB0C. Shutter remains at 70% as wind speed\
+      \ and cloud cover do not trigger adjustments.\"\n}"
+    response-time: 67.65
+    personalization-score: 9
+    contextual-score: 9
+    interpretability-score: 10
+---
+input:
+  PowerConsumption:
+    level: Moderate
+    watt: 2000
+  Weather:
+    temperature: 10
+    wind-speed': 25.0
+    humidity: 80
+    cloud-cover: 80
+    sunset: 2025-10-03T06:00
+    sunrise': 2025-10-03T19:00
+  DayTime: '2025-10-03T12:00:00'
+  Shutter:
+    position: 20
+  Lights:
+    'on': false
+    brightness: 0
+    warm: true
+  Fridge:
+    cooler: 3
+    freezer: -17
+  AC:
+    temperature: 22
+    fan: low
+    mode: heat
+    'on': false
+  CurrentlyHome: man,dogs,kids
+output:
+  crewai:
+    output: "{\n  \"AC\": {\"on\": false, \"temperature\": 21.74, \"fan\": \"low\"\
+      , \"mode\": \"heat\"},\n  \"Lights\": {\"on\": false, \"brightness\": 0, \"\
+      warm\": true},\n  \"Fridge\": {\"cooler\": 4, \"freezer\": -18},\n  \"Shutter\"\
+      : {\"position\": 80},\n  \"Explanation\": \"No adjustments needed; current settings\
+      \ are within normal ranges and no critical conditions detected.\"\n}"
+    response-time: 212.77
+    personalization-score: 6
+    contextual-score: 6
+    interpretability-score: 6
+  agno:
+    output: "I\u2019m ready to put everything together, but I\u2019ll need the latest\
+      \ outputs from each of the agents you have running. Could you let me know which\
+      \ agents I should pull data from (e.g., Weather, Traffic, Air\u2011Quality,\
+      \ etc.)? Once I have those, I\u2019ll combine them into a single JSON and add\
+      \ any alerts that might be required."
+    response-time: 18.5
+    personalization-score: 0
+    contextual-score: 0
+    interpretability-score: 8
+  langgraph:
+    output: "{\n  \"AC\": {\"on\": false, \"temperature\": 22, \"fan\": \"low\", \"\
+      mode\": \"heat\"},\n  \"Lights\": {\"on\": false, \"brightness\": 0, \"warm\"\
+      : true},\n  \"Fridge\": {\"cooler\": 4, \"freezer\": -18},\n  \"Shutter\": {\"\
+      position\": 80},\n  \"Explanation\": \"October is outside the defined summer\
+      \ and winter periods, so AC remains off with its current settings. Lights are\
+      \ turned off during bright daytime hours (cloud cover <90%). Fridge temperature\
+      \ is set to 4\xB0C and freezer to -18\xB0C because the outside temperature is\
+      \ below 30\xB0C. Shutters are opened wider (position 80%) during daytime with\
+      \ high cloud cover to improve natural lighting.\"\n}"
+    response-time: 38.77
+    personalization-score: 9
+    contextual-score: 9
+    interpretability-score: 10
+---
+input:
+  PowerConsumption:
+    level: Moderate
+    watt: 2000
+  Weather:
+    temperature: 33
+    wind-speed': 5.0
+    humidity: 80
+    cloud-cover: 10
+    sunset: 2025-05-03T05:00
+    sunrise': 2025-05-03T19:00
+  DayTime: '2025-05-03T16:00:00'
+  Shutter:
+    position: 60
+  Lights:
+    'on': false
+    brightness: 0
+    warm: true
+  Fridge:
+    cooler: 4
+    freezer: -20
+  AC:
+    temperature: 22
+    fan: low
+    mode: cool
+    'on': true
+  CurrentlyHome: dogs,kids
+output:
+  crewai:
+    output: "{\n  \"AC\": {\"on\": true, \"temperature\": 24, \"fan\": \"low\", \"\
+      mode\": \"cool\"},\n  \"Lights\": {\"on\": false, \"brightness\": 0, \"warm\"\
+      : true},\n  \"Fridge\": {\"cooler\": 3, \"freezer\": -20},\n  \"Shutter\": {\"\
+      position\": 60},\n  \"Explanation\": {\"text\":\"All devices are operating within\
+      \ normal ranges; no adjustments needed.\"}\n}"
+    response-time: 179.73
+    personalization-score: 6
+    contextual-score: 6
+    interpretability-score: 6
+  agno:
+    output: "{\n  \"AC\": {\n    \"state\": true,\n    \"temp\": 24,\n    \"fan\"\
+      : \"low\",\n    \"mode\": \"cool\"\n  },\n  \"Lights\": {\n    \"state\": false,\n\
+      \    \"brightness\": 0,\n    \"warm\": true\n  },\n  \"Fridge\": {\n    \"cooler\"\
+      : 3,\n    \"freezer\": -20\n  },\n  \"Shutter\": {\n    \"position\": 60\n \
+      \ },\n  \"alert\": null\n}"
+    response-time: 139.27
+    personalization-score: 9
+    contextual-score: 9
+    interpretability-score: 0
+  langgraph:
+    output: "{\n  \"AC\": {\"on\": true, \"temperature\": 24, \"fan\": \"low\", \"\
+      mode\": \"cool\"},\n  \"Lights\": {\"on\": false, \"brightness\": 0, \"warm\"\
+      : false},\n  \"Fridge\": {\"cooler\": 3, \"freezer\": -20},\n  \"Shutter\":\
+      \ {\"position\": 60},\n  \"Explanation\": \"AC set to 24\xB0C (base 24\xB0C\
+      \ +1\xB0C for moderate power, -1\xB0C for humidity >70%). Lights remain off\
+      \ during bright daytime with low cloud cover. Fridge cooler lowered to 3\xB0\
+      C and freezer to -20\xB0C due to outside temperature >30\xB0C. Shutter position\
+      \ unchanged at 60% as wind speed and cloud cover do not trigger adjustments.\"\
+      ,\n  \"Alert\": null\n}"
+    response-time: 43.95
+    personalization-score: 9
+    contextual-score: 9
+    interpretability-score: 10
+---
+input:
+  PowerConsumption:
+    level: Moderate
+    watt: 2000
+  Weather:
+    temperature: 8
+    wind-speed': 20.0
+    humidity: 60
+    cloud-cover: 60
+    sunset: 2025-02-03T07:00
+    sunrise': 2025-02-03T18:00
+  DayTime: '2025-02-03T22:00:00'
+  Shutter:
+    position: 45
+  Lights:
+    'on': true
+    brightness: 40
+    warm: false
+  Fridge:
+    cooler: 4
+    freezer: -19
+  AC:
+    temperature: 24
+    fan: medium
+    mode: heat
+    'on': true
+  CurrentlyHome: man,dogs,woman
+output:
+  crewai:
+    output: "{\n  \"AC\": {\"on\": true, \"temperature\": 22, \"fan\": \"medium\"\
+      , \"mode\": \"heat\"},\n  \"Lights\": {\"on\": true, \"brightness\": 14, \"\
+      warm\": true},\n  \"Fridge\": {\"cooler\": 4, \"freezer\": -18},\n  \"Shutter\"\
+      : {\"position\": 100},\n  \"Explanation\": \"Current settings are within comfort\
+      \ and energy\u2011efficiency guidelines; no adjustments needed.\"\n}"
+    response-time: 210.39
+    personalization-score: 6
+    contextual-score: 6
+    interpretability-score: 6
+  agno:
+    output: "{\n  \"ac\": {\n    \"on\": true,\n    \"temperature\": 22,\n    \"fan\"\
+      : \"medium\",\n    \"mode\": \"heat\"\n  },\n  \"lights\": {\n    \"on\": true,\n\
+      \    \"brightness\": 35,\n    \"warm\": false\n  },\n  \"fridge\": {\n    \"\
+      cooler\": 4,\n    \"freezer\": -18\n  },\n  \"shutter\": {\n    \"position\"\
+      : 90\n  }\n}"
+    response-time: 121.4
+    personalization-score: 7
+    contextual-score: 7
+    interpretability-score: 0
+  langgraph:
+    output: "{\n  \"AC\": {\"on\": true, \"temperature\": 22, \"fan\": \"medium\"\
+      , \"mode\": \"heat\"},\n  \"Lights\": {\"on\": true, \"brightness\": 20, \"\
+      warm\": false},\n  \"Fridge\": {\"cooler\": 4, \"freezer\": -18},\n  \"Shutter\"\
+      : {\"position\": 90},\n  \"Explanation\": \"AC set to 22\xB0C to reduce heating\
+      \ due to moderate power consumption and winter mode. Lights dimmed to 20% for\
+      \ late evening and power saving. Fridge kept at 4\xB0C, freezer at -18\xB0C.\
+      \ Shutters closed to 90% after sunset to retain heat.\"\n}"
+    response-time: 93.13
+    personalization-score: 9
+    contextual-score: 9
+    interpretability-score: 10
+---
+input:
+  PowerConsumption:
+    level: Moderate
+    watt: 2000
+  Weather:
+    temperature: 12
+    wind-speed': 24.0
+    humidity: 60
+    cloud-cover: 60
+    sunset: 2025-04-03T07:00
+    sunrise': 2025-04-03T18:00
+  DayTime: '2025-04-03T14:00:00'
+  Shutter:
+    position: 50
+  Lights:
+    'on': false
+    brightness: 40
+    warm: false
+  Fridge:
+    cooler: 4
+    freezer: -19
+  AC:
+    temperature: 24
+    fan: high
+    mode: heat
+    'on': true
+  CurrentlyHome: man,dogs,kids
+output:
+  crewai:
+    output: "{\n  \"AC\": {\n    \"on\": true,\n    \"temperature\": 22,\n    \"fan\"\
+      : \"medium\",\n    \"mode\": \"heat\"\n  },\n  \"Lights\": {\n    \"on\": false,\n\
+      \    \"brightness\": 0,\n    \"warm\": false\n  },\n  \"Fridge\": {\n    \"\
+      cooler\": 4,\n    \"freezer\": -18\n  },\n  \"Shutter\": {\n    \"position\"\
+      : 50\n  },\n  \"Explanation\": \"Adjusted AC setpoint by +1\xB0C for moderate\
+      \ load, reduced fan to medium for energy saving, kept lights off and shutters\
+      \ at current position.\",\n  \"Alert\": {\n    \"level\": \"warning\",\n   \
+      \ \"message\": \"No alert\"\n  }\n}"
+    response-time: 190.39
+    personalization-score: null
+    contextual-score: null
+    interpretability-score: 8
+  agno:
+    output: "{\n  \"AC\": {\"on\": true, \"temperature\": 22, \"fan\": \"low\", \"\
+      mode\": \"heat\"},\n  \"Lights\": {\"on\": false, \"brightness\": 0, \"warm\"\
+      : false},\n  \"Fridge\": {\"cooler\": 4, \"freezer\": -18},\n  \"Shutter\":\
+      \ {\"position\": 50},\n  \"Explanation\": \"AC set to heat at 22\xB0C with low\
+      \ fan to reduce power consumption per moderate level guidelines. Lights remain\
+      \ off during daytime with cloud cover below 90%. Fridge and freezer temperatures\
+      \ adjusted for outside temperature below 30\xB0C. Shutter position unchanged\
+      \ as wind speed and cloud cover are within normal limits.\",\n  \"Alert\": null\n\
+      }"
+    response-time: 59.46
+    personalization-score: 9
+    contextual-score: 9
+    interpretability-score: 7
+  langgraph:
+    output: "{\n  \"AC\": {\"on\": true, \"temperature\": 24, \"fan\": \"high\", \"\
+      mode\": \"heat\"},\n  \"Lights\": {\"on\": false, \"brightness\": 40, \"warm\"\
+      : false},\n  \"Fridge\": {\"cooler\": 4, \"freezer\": -18},\n  \"Shutter\":\
+      \ {\"position\": 50},\n  \"Explanation\": \"AC remains unchanged as no seasonal\
+      \ or power\u2011consumption rules apply; lights stay off during bright daytime\
+      \ with moderate cloud cover; fridge cooler stays at 4\xB0C, freezer adjusted\
+      \ to -18\xB0C per guideline; shutters remain at 50% as wind speed and cloud\
+      \ cover do not trigger changes.\"\n}"
+    response-time: 79.35
+    personalization-score: 9
+    contextual-score: 9
+    interpretability-score: 10
+---
+input:
+  PowerConsumption:
+    level: Moderate
+    watt: 2000
+  Weather:
+    temperature: 33
+    wind-speed': 4.0
+    humidity: 70
+    cloud-cover: 10
+    sunset: 2025-06-03T05:00
+    sunrise': 2025-06-03T19:00
+  DayTime: '2025-06-03T11:00:00'
+  Shutter:
+    position: 60
+  Lights:
+    'on': true
+    brightness: 20
+    warm: true
+  Fridge:
+    cooler: 4
+    freezer: -19
+  AC:
+    temperature: 22
+    fan: high
+    mode: cool
+    'on': true
+  CurrentlyHome: dogs,woman,kids
+output:
+  crewai:
+    output: "{\n  \"AC\": {\"on\": true, \"temperature\": 24, \"fan\": \"high\", \"\
+      mode\": \"cool\"},\n  \"Lights\": {\"on\": false, \"brightness\": 0, \"warm\"\
+      : false},\n  \"Fridge\": {\"cooler\": 3, \"freezer\": -20},\n  \"Shutter\":\
+      \ {\"position\": 80},\n  \"Explanation\": \"Applied moderate load response:\
+      \ dimmed lights by 30% (no change as lights were off), adjusted AC setpoint\
+      \ by -1\xB0C to 24\xB0C, kept fan high, left fridge settings unchanged, and\
+      \ maintained shutter position at 80%.\"\n}"
+    response-time: 194.24
+    personalization-score: 8
+    contextual-score: 7
+    interpretability-score: 8
+  agno:
+    output: "Sure! To give you the most accurate recommendation, could you let me\
+      \ know which location (city or address) you\u2019d like me to check?"
+    response-time: 5.74
+    personalization-score: 0
+    contextual-score: 0
+    interpretability-score: 1
+  langgraph:
+    output: "{\n  \"AC\": {\"on\": true, \"temperature\": 25, \"fan\": \"high\", \"\
+      mode\": \"cool\"},\n  \"Lights\": {\"on\": false, \"brightness\": 0, \"warm\"\
+      : false},\n  \"Fridge\": {\"cooler\": 3, \"freezer\": -20},\n  \"Shutter\":\
+      \ {\"position\": 60},\n  \"Explanation\": {\"text\":\"AC set to 25\xB0C due\
+      \ to moderate power consumption and summer season. Lights turned off during\
+      \ daylight. Fridge cooler set to 3\xB0C because outside >30\xB0C. Shutter remains\
+      \ at 60% as no wind or cloud conditions require adjustment.\"}\n}"
+    response-time: 50.94
+    personalization-score: 10
+    contextual-score: 10
+    interpretability-score: 10
+---
+input:
+  PowerConsumption:
+    level: Critical
+    watt: 2800
+  Weather:
+    temperature: 7
+    wind-speed': 15.0
+    humidity: 40
+    cloud-cover: 94
+    sunset: 2025-12-02T17:00
+    sunrise': 2025-12-02T07:00
+  DayTime: '2025-12-02T10:00:00'
+  Shutter:
+    position: 30
+  Lights:
+    'on': false
+    brightness: 0
+    warm: true
+  Fridge:
+    cooler: 3
+    freezer: -20
+  AC:
+    temperature: 23
+    fan: low
+    mode: heat
+    'on': true
+  CurrentlyHome: man,dogs,woman
+output:
+  crewai:
+    output: "{\n  \"AC\": {\n    \"on\": true,\n    \"temperature\": 21,\n    \"fan\"\
+      : \"low\",\n    \"mode\": \"heat\"\n  },\n  \"Lights\": {\n    \"on\": false,\n\
+      \    \"brightness\": 0,\n    \"warm\": true\n  },\n  \"Fridge\": {\n    \"cooler\"\
+      : 4,\n    \"freezer\": -18\n  },\n  \"Shutter\": {\n    \"position\": 80\n \
+      \ },\n  \"Explanation\": \"Current settings are within normal operating parameters;\
+      \ no adjustments needed.\"\n}"
+    response-time: 202.08
+    personalization-score: 5
+    contextual-score: 5
+    interpretability-score: 5
+  agno:
+    output: "{\"AC\":{\"on\":true,\"temperature\":22,\"fan\":\"low\",\"mode\":\"heat\"\
+      },\"Lights\":{\"on\":false,\"brightness\":0,\"warm\":true},\"Fridge\":{\"cooler\"\
+      :4,\"freezer\":-18},\"Shutter\":{\"position\":80},\"Explanation\":\"Adjusted\
+      \ AC setpoint from 23\xB0C to 22\xB0C to account for critical power level (\u2212\
+      2\xB0C) and high cloud cover (+1\xB0C). Lights remain off due to current critical\
+      \ power and lack of daytime illumination requirement. Fridge and freezer temperatures\
+      \ set to standard values (4\xB0C, -18\xB0C) as outside temperature is below\
+      \ 30\xB0C. Shutter position increased to 80% to enhance natural lighting while\
+      \ minimizing drafts.\",\"Alert\":{\"level\":\"warning\",\"message\":\"Critical\
+      \ power consumption detected; AC and lighting settings adjusted to reduce energy\
+      \ usage.\"}}"
+    response-time: 80.01
+    personalization-score: 9
+    contextual-score: 9
+    interpretability-score: 8
+  langgraph:
+    output: "{\n  \"AC\": {\"on\": true, \"temperature\": 22, \"fan\": \"low\", \"\
+      mode\": \"heat\"},\n  \"Lights\": {\"on\": false, \"brightness\": 0, \"warm\"\
+      : true},\n  \"Fridge\": {\"cooler\": 4, \"freezer\": -18},\n  \"Shutter\": {\"\
+      position\": 80},\n  \"Explanation\": \"AC set to 22\xB0C heat mode to balance\
+      \ heating priority due to high cloud cover and critical power consumption, lowering\
+      \ setpoint by 2\xB0C then raising by 1\xB0C. Lights remain off to conserve power\
+      \ under critical load. Fridge cooler adjusted to 4\xB0C and freezer to -18\xB0\
+      C per outside temperature. Shutters opened to 80% to maximize natural light\
+      \ during high cloud cover and daytime. Power consumption remains critical; further\
+      \ load reduction may be needed.\",\n  \"Alert\": {\"level\": \"warning\", \"\
+      message\": \"Power consumption remains at Critical level (2800W). Consider additional\
+      \ load shedding.\"}\n}"
+    response-time: 54.68
+    personalization-score: 9
+    contextual-score: 8
+    interpretability-score: 10
+---
+input:
+  PowerConsumption:
+    level: Critical
+    watt: 2800
+  Weather:
+    temperature: 30
+    wind-speed': 10.0
+    humidity: 90
+    cloud-cover: 10
+    sunset: 2025-07-02T19:00
+    sunrise': 2025-07-02T05:00
+  DayTime: '2025-07-02T08:00:00'
+  Shutter:
+    position: 80
+  Lights:
+    'on': false
+    brightness: 0
+    warm: false
+  Fridge:
+    cooler: 4
+    freezer: -18
+  AC:
+    temperature: 24
+    fan: medium
+    mode: cool
+    'on': true
+  CurrentlyHome: man,dogs
+output:
+  crewai:
+    output: "{\n  \"AC\": {\n    \"on\": true,\n    \"temperature\": 25,\n    \"fan\"\
+      : \"low\",\n    \"mode\": \"cool\"\n  },\n  \"Lights\": {\n    \"on\": false,\n\
+      \    \"brightness\": 0,\n    \"warm\": false\n  },\n  \"Fridge\": {\n    \"\
+      cooler\": 4,\n    \"freezer\": -18\n  },\n  \"Shutter\": {\n    \"position\"\
+      : 80\n  },\n  \"Explanation\": \"Maintained current settings as no critical\
+      \ load or environmental triggers were detected. AC remains on at 25\xB0C with\
+      \ low fan in cool mode; lights are off; fridge at 4\xB0C and freezer at \u2013\
+      18\xB0C; shutters remain at 80% open.\",\n  \"Alert\": {}\n}"
+    response-time: 186.44
+    personalization-score: 5
+    contextual-score: 5
+    interpretability-score: 8
+  agno:
+    output: "{\n  \"AC\": {\n    \"on\": true,\n    \"temperature\": 25,\n    \"fan\"\
+      : \"low\",\n    \"mode\": \"cool\"\n  },\n  \"Lights\": {\n    \"on\": false,\n\
+      \    \"brightness\": 0,\n    \"warm\": false\n  },\n  \"Fridge\": {\n    \"\
+      cooler\": 4,\n    \"freezer\": -18\n  },\n  \"Shutter\": {\n    \"position\"\
+      : 80\n  },\n  \"Explanation\": {\n    \"The AC is kept on in cool mode with\
+      \ a temperature set to 25\xB0C and fan lowered to low to reduce energy use under\
+      \ critical power conditions. Lights remain off during bright daytime hours to\
+      \ conserve energy, following the bright daylight rule. The fridge and freezer\
+      \ temperatures are set to 4\xB0C and -18\xB0C as the outside temperature is\
+      \ not above 30\xB0C. The shutters remain at 80% to maintain privacy and indoor\
+      \ heat, with no wind or cloud factors necessitating change.\"\n  },\n  \"Alert\"\
+      : {\n    \"level\": \"warning\",\n    \"message\": \"Power consumption remains\
+      \ critical; further reductions may be needed if critical level persists.\"\n\
+      \  }\n}"
+    response-time: 40.98
+    personalization-score: 10
+    contextual-score: 10
+    interpretability-score: 10
+  langgraph:
+    output: "{\n  \"AC\": {\"on\": true, \"temperature\": 25, \"fan\": \"low\", \"\
+      mode\": \"cool\"},\n  \"Lights\": {\"on\": false, \"brightness\": 0, \"warm\"\
+      : false},\n  \"Fridge\": {\"cooler\": 4, \"freezer\": -18},\n  \"Shutter\":\
+      \ {\"position\": 80},\n  \"Explanation\": \"AC setpoint adjusted to 25\xB0C\
+      \ (raised by 2\xB0C for critical power, then reduced by 1\xB0C due to high humidity).\
+      \ Fan set to low. Lights remain off during bright daytime with low cloud cover.\
+      \ Fridge and freezer temperatures remain at default as outside temperature is\
+      \ 30\xB0C. Shutters kept at 80% open to allow natural light after sunrise.\"\
+      \n}"
+    response-time: 38.61
+    personalization-score: 10
+    contextual-score: 10
+    interpretability-score: 10
+---
+input:
+  PowerConsumption:
+    level: Critical
+    watt: 2800
+  Weather:
+    temperature: 10
+    wind-speed': 20.0
+    humidity: 60
+    cloud-cover: 90
+    sunset: 2025-03-01T18:00
+    sunrise': 2025-03-01T07:00
+  DayTime: '2025-03-01T06:00:00'
+  Shutter:
+    position: 50
+  Lights:
+    'on': true
+    brightness: 80
+    warm: true
+  Fridge:
+    cooler: 4
+    freezer: -18
+  AC:
+    temperature: 22
+    fan: high
+    mode: heat
+    'on': true
+  CurrentlyHome: woman,kids
+output:
+  crewai:
+    output: "{\n  \"AC\": {\"on\": true, \"temperature\": 20, \"fan\": \"low\", \"\
+      mode\": \"heat\"},\n  \"Lights\": {\"on\": true, \"brightness\": 40, \"warm\"\
+      : false},\n  \"Fridge\": {\"cooler\": 4, \"freezer\": -18},\n  \"Shutter\":\
+      \ {\"position\": 50},\n  \"Explanation\": \"Maintained current settings as no\
+      \ critical load detected and all values are within acceptable ranges. AC remains\
+      \ on in heat mode at 20\xB0C with low fan. Lights are kept on at 40% brightness,\
+      \ not warm. Fridge and freezer are set to the standard 4\xB0C and -18\xB0C.\
+      \ Shutter positioned at 50% for partial closure during the evening period.\"\
+      \n}"
+    response-time: 212.16
+    personalization-score: 9
+    contextual-score: 9
+    interpretability-score: 10
+  agno:
+    output: "I\u2019m ready to compile the recommendations, but I need a bit more\
+      \ information first:\n\n1. **Current conditions** \u2013 What are the relevant\
+      \ data points (e.g., temperature, pressure, wind, etc.) or any metrics you have?\n\
+      2. **Outputs from all agents** \u2013 Could you provide the latest results or\
+      \ summaries that each agent has produced?\n\nOnce I have those details, I can\
+      \ merge the insights into a single JSON and add any necessary alerts."
+    response-time: 8.6
+    personalization-score: 0
+    contextual-score: 0
+    interpretability-score: 5
+  langgraph:
+    output: "{\n  \"AC\": {\"on\": true, \"temperature\": 21, \"fan\": \"low\", \"\
+      mode\": \"heat\"},\n  \"Lights\": {\"on\": true, \"brightness\": 40, \"warm\"\
+      : false},\n  \"Fridge\": {\"cooler\": 4, \"freezer\": -18},\n  \"Shutter\":\
+      \ {\"position\": 0},\n  \"Explanation\": \"AC is set to heat mode at 21\xB0\
+      C with low fan to comply with the critical power consumption rule (\u20132\xB0\
+      C adjustment and fan to low). Lights are dimmed to 40% and switched to cold\
+      \ light for the morning, following the 50% brightness reduction mandated by\
+      \ critical power consumption and the morning light preference. The fridge and\
+      \ freezer temperatures are set to 4\xB0C and \u201318\xB0C respectively because\
+      \ the outside temperature is below 30\xB0C. Shutters are closed (0%) as it is\
+      \ before sunrise and wind speed is below the threshold for partial closure.\"\
+      ,\n  \"Alert\": null\n}"
+    response-time: 52.17
+    personalization-score: 10
+    contextual-score: 10
+    interpretability-score: 10
+---
+input:
+  PowerConsumption:
+    level: Critical
+    watt: 2800
+  Weather:
+    temperature: 30
+    wind-speed': 5.0
+    humidity: 80
+    cloud-cover: 10
+    sunset: 2025-09-03T05:00
+    sunrise': 2025-09-03T19:00
+  DayTime: '2025-09-03T12:00:00'
+  Shutter:
+    position: 70
+  Lights:
+    'on': true
+    brightness: 50
+    warm: true
+  Fridge:
+    cooler: 3
+    freezer: -17
+  AC:
+    temperature: 22
+    fan: low
+    mode: cool
+    'on': true
+  CurrentlyHome: dogs,woman,kids
+output:
+  crewai:
+    output: "{\n  \"AC\": {\"on\": true, \"temperature\": 25, \"fan\": \"low\", \"\
+      mode\": \"cool\"},\n  \"Lights\": {\"on\": false, \"brightness\": 0, \"warm\"\
+      : false},\n  \"Fridge\": {\"cooler\": 4, \"freezer\": -18},\n  \"Shutter\":\
+      \ {\"position\": 70},\n  \"Explanation\": \"No new environmental data; maintain\
+      \ current settings.\"\n}"
+    response-time: 222.31
+    personalization-score: 5
+    contextual-score: 5
+    interpretability-score: 5
+  agno:
+    output: "{\n  \"AC\": {\"on\": true, \"temperature\": 25, \"fan\": \"low\", \"\
+      mode\": \"cool\"},\n  \"Lights\": {\"on\": true, \"brightness\": 25, \"warm\"\
+      : true},\n  \"Fridge\": {\"cooler\": 4, \"freezer\": -18},\n  \"Shutter\": {\"\
+      position\": 100},\n  \"Explanation\": \"AC temperature raised to 25\xB0C to\
+      \ accommodate critical power level (+2\xB0C) and humidity effect (+1\xB0C) while\
+      \ maintaining fan at low per critical guidelines. Lights dimmed to 25% brightness\
+      \ due to critical power rule and warmed for high humidity. Fridge set to 4\xB0\
+      C/\u201318\xB0C per temperature guideline. Shutters fully closed (100%) to retain\
+      \ heat during nighttime with low wind speed.\",\n  \"Alert\": {\"level\": \"\
+      warning\", \"message\": \"Power consumption remains critical; consider further\
+      \ reductions.\"}\n}"
+    response-time: 96.47
+    personalization-score: 5
+    contextual-score: 6
+    interpretability-score: 10
+  langgraph:
+    output: "{\n  \"AC\": {\n    \"on\": true,\n    \"temperature\": 25,\n    \"fan\"\
+      : \"low\",\n    \"mode\": \"cool\"\n  },\n  \"Lights\": {\n    \"on\": false,\n\
+      \    \"brightness\": 0,\n    \"warm\": false\n  },\n  \"Fridge\": {\n    \"\
+      cooler\": 4,\n    \"freezer\": -18\n  },\n  \"Shutter\": {\n    \"position\"\
+      : 70\n  },\n  \"Explanation\": \"AC set to 25\xB0C (summer base 24\xB0C +2\xB0\
+      C for critical power, \u20131\xB0C for high humidity). Lights turned off during\
+      \ bright daytime hours (cloud cover <90%). Fridge cooler set to 4\xB0C and freezer\
+      \ to \u201318\xB0C because outside temperature is not >30\xB0C. Shutter remains\
+      \ at 70% as no wind >30\u202Fkm/h or high cloud cover. No alerts required.\"\
+      \n}"
+    response-time: 64.51
+    personalization-score: 10
+    contextual-score: 10
+    interpretability-score: 9
+---
+input:
+  PowerConsumption:
+    level: Critical
+    watt: 2800
+  Weather:
+    temperature: 10
+    wind-speed': 25.0
+    humidity: 80
+    cloud-cover: 80
+    sunset: 2025-10-03T06:00
+    sunrise': 2025-10-03T19:00
+  DayTime: '2025-10-03T12:00:00'
+  Shutter:
+    position: 20
+  Lights:
+    'on': false
+    brightness: 0
+    warm: true
+  Fridge:
+    cooler: 3
+    freezer: -17
+  AC:
+    temperature: 22
+    fan: low
+    mode: heat
+    'on': false
+  CurrentlyHome: man,dogs,kids
+output:
+  crewai:
+    output: "{\n  \"AC\": {\n    \"on\": false,\n    \"temperature\": 21.55,\n   \
+      \ \"fan\": \"low\",\n    \"mode\": \"heat\"\n  },\n  \"Lights\": {\n    \"on\"\
+      : false,\n    \"brightness\": 0,\n    \"warm\": true\n  },\n  \"Fridge\": {\n\
+      \    \"cooler\": 4,\n    \"freezer\": -18\n  },\n  \"Shutter\": {\n    \"position\"\
+      : 80\n  },\n  \"Explanation\": \"No changes required: AC is off in heat mode\
+      \ with a comfortable temperature, lights are off, shutters are open for daylight,\
+      \ and fridge settings are standard. No critical load or safety issue detected.\"\
+      \n}"
+    response-time: 250.44
+    personalization-score: 5
+    contextual-score: 5
+    interpretability-score: 5
+  agno:
+    output: "{\n  \"AC\": {\n    \"on\": false,\n    \"temperature\": 20,\n    \"\
+      fan\": \"low\",\n    \"mode\": \"heat\"\n  },\n  \"Lights\": {\n    \"on\":\
+      \ false,\n    \"brightness\": 0,\n    \"warm\": false\n  },\n  \"Fridge\": {\n\
+      \    \"cooler\": 4,\n    \"freezer\": -18\n  },\n  \"Shutter\": {\n    \"position\"\
+      : 80\n  },\n  \"Explanation\": \"AC remains off to avoid adding to critical\
+      \ power load, set point adjusted to 20\xB0C (lowered 2\xB0C due to critical\
+      \ load). Lights are off during daylight. Fridge and freezer set to default 4\xB0\
+      C and -18\xB0C as outside temperature is below 30\xB0C. Shutters opened to 80%\
+      \ to maximize natural light while minimizing drafts.\",\n  \"Alert\": {\n  \
+      \  \"level\": \"warning\",\n    \"message\": \"Power consumption critical -\
+      \ AC off and lights off to reduce load.\"\n  }\n}"
+    response-time: 88.2
+    personalization-score: 10
+    contextual-score: 10
+    interpretability-score: 10
+  langgraph:
+    output: "{\n  \"AC\": {\n    \"on\": false,\n    \"temperature\": 20,\n    \"\
+      fan\": \"low\",\n    \"mode\": \"heat\"\n  },\n  \"Lights\": {\n    \"on\":\
+      \ false,\n    \"brightness\": 0,\n    \"warm\": true\n  },\n  \"Fridge\": {\n\
+      \    \"cooler\": 4,\n    \"freezer\": -18\n  },\n  \"Shutter\": {\n    \"position\"\
+      : 80\n  },\n  \"Explanation\": {\n    \"text\": \"AC remains off with a reduced\
+      \ heating setpoint of 20\xB0C to comply with the Critical power\u2011consumption\
+      \ rule. Lights are off during bright daytime hours (cloud cover <90%). Fridge\
+      \ and freezer temperatures are adjusted to 4\xB0C and \u201318\xB0C respectively\
+      \ because the outside temperature is below 30\xB0C. Shutters are opened wider\
+      \ (80%) due to high cloud cover (>65%) during daytime, with no wind\u2011speed\
+      \ restriction applied.\"\n  }\n}"
+    response-time: 53.68
+    personalization-score: 10
+    contextual-score: 10
+    interpretability-score: 10
+---
+input:
+  PowerConsumption:
+    level: Critical
+    watt: 2800
+  Weather:
+    temperature: 12
+    wind-speed': 30.0
+    humidity: 60
+    cloud-cover: 90
+    sunset: 2025-11-03T05:00
+    sunrise': 2025-11-03T19:00
+  DayTime: '2025-11-03T18:00:00'
+  Shutter:
+    position: 40
+  Lights:
+    'on': true
+    brightness: 40
+    warm: false
+  Fridge:
+    cooler: 4
+    freezer: -19
+  AC:
+    temperature: 24
+    fan: medium
+    mode: heat
+    'on': true
+  CurrentlyHome: man,dogs,kids
+output:
+  crewai:
+    output: "{\n  \"AC\": {\"on\": true, \"temperature\": 21, \"fan\": \"low\", \"\
+      mode\": \"heat\"},\n  \"Lights\": {\"on\": true, \"brightness\": 20, \"warm\"\
+      : true},\n  \"Fridge\": {\"cooler\": 4, \"freezer\": -18},\n  \"Shutter\": {\"\
+      position\": 80},\n  \"Explanation\": {\"text\":\"No changes applied; current\
+      \ settings within normal operating parameters.\"},\n  \"Alert\": {\"level\"\
+      :\"warning\",\"message\":\"No issues detected.\"}\n}"
+    response-time: 234.97
+    personalization-score: 6
+    contextual-score: 6
+    interpretability-score: 5
+  agno:
+    output: "I\u2019m ready to combine the agents\u2019 recommendations into a single\
+      \ JSON summary, but I need the individual outputs first. Could you provide the\
+      \ \u201Crecommended state\u201D (or any relevant data) that each agent has produced?\
+      \ Once I have those, I can merge them, check for any alerts, and return a consolidated\
+      \ JSON."
+    response-time: 11.31
+    personalization-score: 0
+    contextual-score: 0
+    interpretability-score: 5
+  langgraph:
+    output: "{\n  \"AC\": {\"on\": true, \"temperature\": 22, \"fan\": \"low\", \"\
+      mode\": \"heat\"},\n  \"Lights\": {\"on\": true, \"brightness\": 20, \"warm\"\
+      : true},\n  \"Fridge\": {\"cooler\": 4, \"freezer\": -18},\n  \"Shutter\": {\"\
+      position\": 90},\n  \"Explanation\": \"AC temperature lowered to 22\xB0C and\
+      \ fan set to low per critical power consumption rule; lights dimmed to 20% brightness\
+      \ and set to warm as it is evening; fridge cooler kept at 4\xB0C and freezer\
+      \ adjusted to -18\xB0C because outside temperature is below 30\xB0C; shutters\
+      \ closed to 90% for privacy after sunset.\"\n}"
+    response-time: 51.06
+    personalization-score: 8
+    contextual-score: 10
+    interpretability-score: 10
+---
+input:
+  PowerConsumption:
+    level: Critical
+    watt: 2800
+  Weather:
+    temperature: 8
+    wind-speed': 20.0
+    humidity: 60
+    cloud-cover: 60
+    sunset: 2025-02-03T07:00
+    sunrise': 2025-02-03T18:00
+  DayTime: '2025-02-03T22:00:00'
+  Shutter:
+    position: 45
+  Lights:
+    'on': true
+    brightness: 40
+    warm: false
+  Fridge:
+    cooler: 4
+    freezer: -19
+  AC:
+    temperature: 24
+    fan: medium
+    mode: heat
+    'on': true
+  CurrentlyHome: man,dogs,woman
+output:
+  crewai:
+    output: "{\n  \"AC\": {\n    \"on\": true,\n    \"temperature\": 21,\n    \"fan\"\
+      : \"low\",\n    \"mode\": \"heat\"\n  },\n  \"Lights\": {\n    \"on\": true,\n\
+      \    \"brightness\": 20,\n    \"warm\": true\n  },\n  \"Fridge\": {\n    \"\
+      cooler\": 5,\n    \"freezer\": -18\n  },\n  \"Shutter\": {\n    \"position\"\
+      : 100\n  },\n  \"Explanation\": \"Current settings are within operational ranges\
+      \ and no high power consumption or conflict detected. AC is heating at 21\xB0\
+      C, lights are dimmed at 20% brightness, fridge and freezer temperatures are\
+      \ acceptable, and shutters are fully open. No adjustments are necessary at this\
+      \ time.\"\n}"
+    response-time: 222.38
+    personalization-score: 5
+    contextual-score: 5
+    interpretability-score: 7
+  agno:
+    output: "I\u2019m ready to synthesize a recommendation for you, but I\u2019ll\
+      \ need a bit more information about the situation. Could you let me know:\n\n\
+      1. What specific conditions or environment are you referring to (e.g., a physical\
+      \ location, a system status, a project phase, etc.)?\n2. Are there any particular\
+      \ constraints, risks, or priorities you want the recommendation to consider?\n\
+      \nOnce I have those details, I can pull in the relevant agent insights, produce\
+      \ a unified JSON recommendation, and flag any alerts if necessary."
+    response-time: 5.83
+    personalization-score: 0
+    contextual-score: 0
+    interpretability-score: 5
+  langgraph:
+    output: "{\n  \"AC\": {\n    \"on\": true,\n    \"temperature\": 21,\n    \"fan\"\
+      : \"low\",\n    \"mode\": \"heat\"\n  },\n  \"Lights\": {\n    \"on\": true,\n\
+      \    \"brightness\": 20,\n    \"warm\": true\n  },\n  \"Fridge\": {\n    \"\
+      cooler\": 4,\n    \"freezer\": -18\n  },\n  \"Shutter\": {\n    \"position\"\
+      : 100\n  },\n  \"Explanation\": \"AC set to 21\xB0C with low fan in heating\
+      \ mode to reduce power at critical level; lights dimmed to 20% (50% of 40) and\
+      \ warmed for evening comfort, complying with critical power rule; fridge cooler\
+      \ kept at 4\xB0C and freezer at -18\xB0C per outside temperature; shutters fully\
+      \ closed to retain heat and privacy at night.\",\n  \"Alert\": {\n    \"level\"\
+      : \"warning\",\n    \"message\": \"Power consumption is critical; load has been\
+      \ reduced across AC, lights, and shutters.\"\n  }\n}"
+    response-time: 59.08
+    personalization-score: 8
+    contextual-score: 8
+    interpretability-score: 10
+---
+input:
+  PowerConsumption:
+    level: Critical
+    watt: 2800
+  Weather:
+    temperature: 12
+    wind-speed': 24.0
+    humidity: 60
+    cloud-cover: 60
+    sunset: 2025-04-03T07:00
+    sunrise': 2025-04-03T18:00
+  DayTime: '2025-04-03T14:00:00'
+  Shutter:
+    position: 50
+  Lights:
+    'on': false
+    brightness: 40
+    warm: false
+  Fridge:
+    cooler: 4
+    freezer: -19
+  AC:
+    temperature: 24
+    fan: high
+    mode: heat
+    'on': true
+  CurrentlyHome: man,dogs,kids
+output:
+  crewai:
+    output: "{\n  \"AC\": {\"on\": true, \"temperature\": 20, \"fan\": \"low\", \"\
+      mode\": \"heat\"},\n  \"Lights\": {\"on\": false, \"brightness\": 0, \"warm\"\
+      : false},\n  \"Fridge\": {\"cooler\": 4, \"freezer\": -18},\n  \"Shutter\":\
+      \ {\"position\": 50},\n  \"Explanation\": \"Current state already satisfies\
+      \ all procedural rules: AC is on with a reasonable temperature for heating,\
+      \ lights are off as per daytime/nighttime policy, fridge/freezer settings match\
+      \ the default outside temperature assumption, and shutters are at a neutral\
+      \ position. No external conditions (outside temperature, wind, time-of-day)\
+      \ are provided to trigger adjustments.\"\n}"
+    response-time: 229.12
+    personalization-score: 6
+    contextual-score: 6
+    interpretability-score: 10
+  agno:
+    output: "{\n  \"recommended_state\": \"safe\",\n  \"alerts\": [],\n  \"agent_outputs\"\
+      : {\n    \"analysis\": \"No actionable concerns identified from the analysis\
+      \ perspective. Current conditions are within normal operational limits.\",\n\
+      \    \"commentary\": \"No special commentary to report. All metrics appear stable.\"\
+      ,\n    \"final\": \"The system advises to continue normal operations. No alerts\
+      \ triggered.\"\n  }\n}"
+    response-time: 19.19
+    personalization-score: 5
+    contextual-score: 5
+    interpretability-score: 5
+  langgraph:
+    output: "{\n  \"AC\": {\"on\": true, \"temperature\": 22, \"fan\": \"low\", \"\
+      mode\": \"heat\"},\n  \"Lights\": {\"on\": false, \"brightness\": 0, \"warm\"\
+      : false},\n  \"Fridge\": {\"cooler\": 4, \"freezer\": -18},\n  \"Shutter\":\
+      \ {\"position\": 50},\n  \"Explanation\": \"AC temperature lowered by 2\xB0\
+      C and fan set to low due to critical power consumption. Lights remain off during\
+      \ daylight hours as cloud cover is below 90%. Fridge cooler set to 4\xB0C and\
+      \ freezer to -18\xB0C because outside temperature is below 30\xB0C. Shutter\
+      \ position stays at 50% as wind speed is below 30 km/h and cloud cover is below\
+      \ 65%.\"\n}"
+    response-time: 49.09
+    personalization-score: 10
+    contextual-score: 10
+    interpretability-score: 10
+---
+input:
+  PowerConsumption:
+    level: Critical
+    watt: 2800
+  Weather:
+    temperature: 33
+    wind-speed': 4.0
+    humidity: 70
+    cloud-cover: 10
+    sunset: 2025-06-03T05:00
+    sunrise': 2025-06-03T19:00
+  DayTime: '2025-06-03T11:00:00'
+  Shutter:
+    position: 60
+  Lights:
+    'on': true
+    brightness: 20
+    warm: true
+  Fridge:
+    cooler: 4
+    freezer: -19
+  AC:
+    temperature: 22
+    fan: high
+    mode: cool
+    'on': true
+  CurrentlyHome: dogs,woman,kids
+output:
+  crewai:
+    output: "{\n  \"AC\": {\n    \"on\": true,\n    \"temperature\": 26,\n    \"fan\"\
+      : \"low\",\n    \"mode\": \"cool\"\n  },\n  \"Lights\": {\n    \"on\": false,\n\
+      \    \"brightness\": 0,\n    \"warm\": false\n  },\n  \"Fridge\": {\n    \"\
+      cooler\": 4,\n    \"freezer\": -18\n  },\n  \"Shutter\": {\n    \"position\"\
+      : 70\n  },\n  \"Explanation\": \"Based on the provided AC state and without\
+      \ additional environmental data, the system defaults to a moderate load strategy:\
+      \ lights are turned off (daytime/nighttime rule), shutters are kept largely\
+      \ open at 70% to allow natural light, and the fridge/freezer settings follow\
+      \ the standard rule for outside temperatures below 30\u202F\xB0C. The AC remains\
+      \ in its current configuration (cool mode, 26\u202F\xB0C setpoint, low fan)\
+      \ as no indication of critical load or extreme weather conditions was supplied.\"\
+      ,\n  \"Alert\": {\n    \"level\": \"warning\",\n    \"message\": \"No alert\
+      \ triggered; all devices operate within normal power thresholds.\"\n  }\n}"
+    response-time: 222.85
+    personalization-score: 5
+    contextual-score: 5
+    interpretability-score: 10
+  agno:
+    output: "I\u2019m ready to combine everything into a single JSON with a recommended\
+      \ state and any necessary alerts.  \nCould you let me know which team agents\
+      \ I should pull results from (e.g., their IDs or names)? That way I can request\
+      \ each of their outputs and merge them accurately."
+    response-time: 11.14
+    personalization-score: 0
+    contextual-score: 0
+    interpretability-score: 5
+  langgraph:
+    output: "{\n  \"AC\": {\"on\": true, \"temperature\": 26, \"fan\": \"low\", \"\
+      mode\": \"cool\"},\n  \"Lights\": {\"on\": true, \"brightness\": 10, \"warm\"\
+      : true},\n  \"Fridge\": {\"cooler\": 3, \"freezer\": -20},\n  \"Shutter\": {\"\
+      position\": 60},\n  \"Explanation\": \"AC set to cool mode with target 26\xB0\
+      C and low fan to meet critical power level (+2\xB0C adjustment). Lights dimmed\
+      \ to 10% brightness (50% reduction) due to critical power consumption; warm\
+      \ light maintained. Fridge cooler lowered to 3\xB0C and freezer to -20\xB0C\
+      \ because outside temperature exceeds 30\xB0C. Shutter remains at 60% open as\
+      \ it falls within the 50\u201180% range for pre\u2011sunrise conditions and\
+      \ no wind or cloud adjustments apply.\",\n  \"Alert\": {\"level\": \"warning\"\
+      , \"message\": \"Critical power consumption detected; consider reducing overall\
+      \ load if possible.\"}\n}"
+    response-time: 53.54
+    personalization-score: 10
+    contextual-score: 10
+    interpretability-score: 10

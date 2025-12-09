@@ -1,0 +1,12 @@
+lancedb
+agno
+crewai
+pywizlight
+ollama
+langchain_community
+langchain_huggingface
+langchain_ollama
+langgraph
+langgraph-checkpoint-sqlite
+aiosqlite
+pyarrow

@@ -1,0 +1,140 @@
+ac_task:
+  description: >
+    Adjust temperature and fan speed to maintain comfort while respecting energy-saving rules.
+    Consider: current AC state, Weather conditions, Power Consumption, Personal Preferences and Time-of-day context.
+    You rely on these numbers as power saving thresholds:
+    {power_saving_thresholds}
+    The current AC state is:
+    {current_ac_state}
+    The current Weather state is:
+    {current_weather_state}
+    The current Power Consumption state is:
+    {current_power_state}
+    The current Time-of-day is:
+    {current_daytime}
+    The temperature preference distributions for the personas at home are:
+    {temp_preferences_distr}
+    You follow the following guidelines for making your decisions:
+    {ac_guidelines}
+  expected_output: >
+    Your final answer must be exactly one valid JSON object and nothing else, in this format:
+    {
+      "AC": {
+        "on": <boolean>,
+        "temperature": <number>,
+        "mode": "cool" | "heat",
+        "fan": "low" | "medium" | "high"
+      }
+    }
+
+    - temperature: number (int or float, °C)
+    - fan: string, one of "low", "medium", "high"
+
+lights_task:
+  description: >
+    Apply circadian and energy-saving rules to manage lighting.
+    Decide brightness, warmth, and on/off state based on lights state, time-of-day, personal preferences
+    and power consumption.
+    You rely on these numbers as power saving thresholds:
+    {power_saving_thresholds}
+    The current Lights state is:
+    {current_lights_state}
+    The current Weather state is:
+    {current_weather_state}
+    The current Power Consumption state is:
+    {current_power_state}
+    The current Time-of-day is:
+    {current_daytime}
+    The light brightness preference distributions for the personas at home are:
+    {brightness_preferences_distr}
+    You follow the following guidelines for making your decisions:
+    {lights_guidelines}
+  expected_output: >
+    Your final answer must be exactly one valid JSON object and nothing else, in this format:
+    {
+      "Lights": {
+        "on": true | false,
+        "brightness": 0–100,
+        "warm": true | false
+      }
+    }
+    - on: boolean
+    - brightness: integer 0-100
+    - warm: boolean (true = warm light, false = cold light)
+
+fridge_task:
+  description: >
+    Adjust cooler and freezer temperatures within safe ranges.
+    Consider outside temperature and power consumption while preserving food safety.
+    You rely on these numbers as power saving thresholds:
+    {power_saving_thresholds}
+    The current Fridge state is:
+    {current_fridge_state}
+    The current Weather state is:
+    {current_weather_state}
+    The current Power Consumption state is:
+    {current_power_state}
+    The current Time-of-day is:
+    {current_daytime}
+    You follow the following guidelines for making your decisions:
+    {fridge_guidelines}
+  expected_output: >
+    Your final answer must be exactly one valid JSON and nothing else, in this format:
+    {
+      "Fridge": {
+        "cooler": <number>,
+        "freezer": <number>
+      }
+    }
+    - cooler/freezer: int (°C)
+
+shutter_task:
+  description: >
+    Adjust the window shutter position to balance natural light, privacy, and indoor comfort while respecting 
+    environmental and energy-saving guidelines.
+    Consider: current Shutter state, Weather conditions (including sunlight intensity, cloud cover, humidity, wind speed and direction),
+    Power Consumption, and Time-of-day context.
+    You rely on these numbers as power saving thresholds:
+    {power_saving_thresholds}
+    The current Shutter state is:
+    {current_shutter_state}
+    The current Weather state is:
+    {current_weather_state}
+    The current Power Consumption state is:
+    {current_power_state}
+    The current Time-of-day is:
+    {current_daytime}
+    You follow the following guidelines for making your decisions:
+    {shutter_guidelines}
+  expected_output: >
+    Your final answer must be exactly one valid JSON object and nothing else, in this format:
+    {
+      "Shutter": {
+        "position": <number>
+      }
+    }
+
+    - position: number (0–100), representing how much the shutter should remain open, 
+      where 0 means fully closed and 100 means fully open.
+
+manager_task:
+  description: >
+    You must always follow this process:
+    1. **Memory Check**: Before reasoning or generating new decisions, search your memory for similar past inputs and their outcomes.
+    2. If you find a sufficiently similar case, reuse the stored decisions (you may adapt slightly if the context differs).
+    3. If no relevant memory is found, proceed with reasoning to generate new coordinated decisions.
+    4. Each agent applies its domain-specific logic while respecting shared knowledge rules.
+    You integrate outputs into a single JSON and add an alert if needed.
+    4. After generating new decisions, store them in memory with the input state for future retrieval.
+    5. Provide a brief explanation of your decision.
+  expected_output: >
+    Your final answer must be exactly one valid JSON object and nothing else, in this format:
+    {
+      "AC": {"on": <boolean>, "temperature": <number>, "fan": "low" | "medium" | "high", "mode": "cool" | "heat"},
+      "Lights": {"on": true | false, "brightness": <int>, "warm": true | false},
+      "Fridge": {"cooler": <number>, "freezer": <number>},
+      "Shutter": {"position": <number>},
+      "Explanation": {"<str>"},
+      "Alert": {"level": "warning" | "error", "message": "<string>"} // optional
+    }
+    - Do not include extra explanations, reasoning details, metadata, or extra text apart from the above JSON.
