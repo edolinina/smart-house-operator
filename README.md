@@ -5,7 +5,7 @@ It integrates intelligent agents for **Air Conditioning (AC)**, **Lighting**, **
 
 ---
 
-### Agents Inputs & Environmental Context
+## Agents Inputs & Environmental Context
 
 The Smart Home system integrates multiple **contextual and learned inputs** to support adaptive, closed-loop decision-making across all agents.
 
@@ -114,7 +114,9 @@ Each device and input module contributes to the **adaptive decision loop**, ensu
 	}
 ```
 
-### 🧩 Multi-Agent Orchestration Engines
+---
+
+## 🧩 Multi-Agent Orchestration Engines
 The Smart House Operator supports **three interchangeable engines** for orchestrating multi-agent collaboration:
 
 - **CrewAI** – for structured, role-based teamwork with agent specialization.  
@@ -123,6 +125,8 @@ The Smart House Operator supports **three interchangeable engines** for orchestr
 
 Each engine can be configured to run the same Smart agents (lights, AC, shutter, fridge), enabling flexible experimentation with different coordination strategies.
 
+---
+
 ## ⚙️ Orchestration Flow
 The SmartHouseOperator coordinates the system by running the following flow:
 1. Collect States -> gathers inputs (weather, power, personal preferences, current device states).
@@ -130,6 +134,8 @@ The SmartHouseOperator coordinates the system by running the following flow:
 3. Integrate Decisions -> Manager Agent combines outputs.
 4. Apply Actions -> updates device states (AC, Lights, Fridge, Shutter).
 5. Alert User (if necessary).
+
+---
 
 ## 🔧 Environment Requirements
 Before running the SmartHouseOperator, you must set the following environment variables to authenticate with connected devices:
@@ -150,6 +156,8 @@ export SMARTTHINGS_TOKEN=<your_smartthings_token>
 export SWITCHER_TOKEN=<your_switcher_token>
 ```
 
+---
+
 ## 🚀 Running the Operator
 1. Configure environment metadata in *env_spec.yaml* (location, ac and lights settings).
 2. Install required dependencies:
@@ -166,7 +174,9 @@ python smart_operator.py --engine crewai
 
 *Note*: If --dry-run is set, the system will simulate decisions without applying them.
 
-### Results Evaluation Methodology
+---
+
+## Results Evaluation
 
 The evaluation consists of two complementary parts designed to ensure reliability despite real-home variability (seasonal changes, occupancy, appliance updates):
 
