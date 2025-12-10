@@ -40,15 +40,6 @@ Each device and input module contributes to the **adaptive decision loop**, ensu
 
 ---
 
-### Ollama Server
-The project's AI backend runs on **Ollama**, a powerful local model server hosted on a **dedicated machine with 88 CPUs, 1 GPU and 128 GB RAM**. Ollama provides a flexible and efficient way to run and manage large language models (LLMs) locally, offering better control over performance, data privacy and latency compared to cloud-based APIs.  
-
-While Ollama can host **any compatible LLM**, for this project **`gpt-oss:20b`** was selected as it demonstrated the best balance between **instruction following, reasoning quality and performance** in the smart-house control context.  
-
-Ollama was chosen for its **ease of integration**, **local execution capabilities** and **modular model management**, making it ideal for experimentation and deployment in environments where **real-time AI reasoning** and **data security** are critical.
-
----
-
 ## 🏠 Team's Agents Descriptions and Roles
 
 ### 1. **AC Optimization Agent**
