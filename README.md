@@ -5,52 +5,6 @@ It integrates intelligent agents for **Air Conditioning (AC)**, **Lighting**, **
 
 ---
 
-## 🧠 Agent Concepts
-
-Smart House Operator is designed using the following principles:
-
-### **Agent Inputs:**
-- **Agent's abilities**:
- * Sense and measure the current state of the environment (e.g. weather conditions) and devices (AC, Lights, Fridge, Shutter).
- * Learn the personal preferences of personas currently at home using reinforcement learning.
- * Control smart-home devices via their respective APIs.  
- * Analyze and reason about necessary adjustments based on rules, thresholds, and learned patterns.  
- * Apply corrective actions by sending commands to the corresponding device APIs.  
-- **Agent's stimuli** -> the agent’s *current observation* of the environment (e.g., weather, power consumption, current devices' state).  
-- **Agent's prior knowledge** -> pre-loaded **rules, guidelines, and thresholds** defining safe and efficient operations and agent's **action space**.
-- **Agent's past experience** -> previous agent's actions and their outcomes, stored in agent's memory
-- **Agent's goals and preferences** -> reduce **power consumption** while balancing comfort, safety and user-defined rules.
-
-### **Agent output:**
-Changes applied to the device states (e.g., new AC temperature, dimmed lights, shutter and fridge adjustments) and alert to the user if unusual or high power consumption values surpass the specified thresholds.
-
-### Agent Characteristcs:**
-- **Rational agent** -> decisions maximize performance by balancing power efficiency with comfort and safety.  
-- **Reactive agent** -> adapts immediately to changes in environment and states.  
-- **Pro-active agent** -> sends **alerts** to the user if critical conditions arise.  
-- **Social agent** -> communicates with humans through alerts and explanations, and coordinates with other agents by delegating relevant tasks.
-- **Reasoning**:
-  - *Deductive reasoning*: applies **rule-based logic** (e.g., circadian lighting rules).  
-  - *Inductive reasoning*: leverages **machine learning and pattern recognition** using Ollama LLM for inferring new states.  
-- **Multi-agent reasoning** -> agents collaborate through the **Manager Agent** to produce coherent global decisions.  
-
-### Agent Environment Characteristics
-- **Partially observable** - agents do not have full information (only current states).
-- **Stochastic** - external factors (weather, user actions) are unpredictable.
-- **Sequential** - current decisions impact future states and energy use.
-- **Dynamic** - environment continuously changes over time (weather, user activity).
-- **Continuous** - states like temperature, brightness vary on scales.
-- **Known** - guidelines and thresholds are predefined and available to agents.
-
-### Agent Power Saving Thresholds
-- **Normal**: < 1500 W
-- **Moderate**: 1500–2500 W
-- **Critical**: > 2500 W
-
-Agents adjust their outputs depending on these thresholds to maintain efficiency.
-
----
-
 ### Agents Inputs & Environmental Context
 
 The Smart Home system integrates multiple **contextual and learned inputs** to support adaptive, closed-loop decision-making across all agents.
@@ -178,24 +132,6 @@ The Smart House Operator supports **three interchangeable engines** for orchestr
 
 Each engine can be configured to run the same Smart agents (lights, AC, shutter, fridge), enabling flexible experimentation with different coordination strategies.
 
-
-### 🧠 Adaptive & Decision Making
-
-The Smart House Operator operates as a **closed-loop decision-making system**, where each cycle involves **collecting inputs, reasoning and acting** based on the current environment.
-
-In each one-shot operation, the system:
-- **Collects contextual inputs** such as weather, power usage, and user preferences  
-- **Delegates reasoning** to a multi-agent decision team (Agno, CrewAI, or LangGraph)  
-- **Executes actions** to adjust devices like AC, lights, fridge and shutters accordingly  
-
-Although each decision loop is independent, the system maintains **adaptive behavior** through model-driven reasoning:
-- Agents respond to **dynamic and non-stationary conditions** (e.g., changing weather or occupancy)  
-- Decisions are optimized using **reinforcement-based personalization** and rule-based constraints  
-- The loop ensures **real-time responsiveness** while maintaining safety, comfort and energy efficiency  
-
-This closed-loop decision process enables Smart Home agents to function as **reactive and context-aware controllers**, achieving intelligent adaptability within each operational cycle.
-
-
 ## ⚙️ Orchestration Flow
 The SmartHouseOperator coordinates the system by running the following flow:
 1. Collect States -> gathers inputs (weather, power, personal preferences, current device states).
@@ -239,3 +175,17 @@ python smart_operator.py --engine crewai
 
 *Note*: If --dry-run is set, the system will simulate decisions without applying them.
 
+### Results Evaluation Methodology
+
+The evaluation consists of two complementary parts designed to ensure reliability despite real-home variability (seasonal changes, occupancy, appliance updates):
+
+1. **Common-sense reasoning evaluation**
+   The MAS’s reasoning abilities are tested through multiple controlled simulations, executed with every supported multi-agent engine (LangGraph, CrewAI, Agno). These scenarios assess how consistently and accurately each configuration produces safe, logical, and energy-aware decisions.
+
+2. **Energy-efficiency assessment:**
+   The impact on household energy use is measured using the AC, the most power-consuming device. The power estimation model follows standard HVAC energy-performance principles, where consumption depends on the temperature deviation from a reference setpoint and includes additional fan loads.
+
+### Evaluation Code & Data
+
+- **Evaluation dataset generation:** [`evaluate.py`](./evaluate.py)
+- **Results assessment:** [`evaluation/`](./evaluation/)
