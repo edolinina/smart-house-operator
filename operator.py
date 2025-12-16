@@ -206,7 +206,7 @@ if __name__ == "__main__":
     # Train brightness preference agent
     light_env = PreferenceEnv(current_at_home, config["brightness-preferences"], (1, 10))
     light_rl_agent = PreferenceRLAgent(light_env, scale_column=10)
-    light_rl_agent.train(episodes=400)
+    light_rl_agent.train(episodes=100)
     operator.register_input("BrightnessPreferencesDistributions", light_rl_agent)
 
     # --- Register environmental inputs ---

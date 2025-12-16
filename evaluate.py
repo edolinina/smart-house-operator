@@ -92,11 +92,11 @@ if __name__ == "__main__":
         personas = ["man", "dogs", "woman", "kids"]
         climate_env = PreferenceEnv(personas, config["temperatures-preferences"], (20, 26))
         climate_rl_agent = PreferenceRLAgent(climate_env)
-        climate_rl_agent.train()
+        climate_rl_agent.train(plot=True)
 
         light_env = PreferenceEnv(personas, config["brightness-preferences"], (1, 10))
         light_rl_agent = PreferenceRLAgent(light_env, scale_column=10)
-        light_rl_agent.train(episodes=400)
+        light_rl_agent.train(episodes=100, plot=True)
 
         for location, location_attrs in config["locations"].items():
             state = {}

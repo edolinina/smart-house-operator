@@ -1,6 +1,7 @@
 import random
 import numpy as np
 import pandas as pd
+import matplotlib.pyplot as plt
 
 import gymnasium as gym
 from gymnasium import spaces
@@ -102,7 +103,41 @@ class PreferenceRLAgent(SmartInput):
             return self.env.action_space.sample()
         return int(np.argmax(self.q_table[state]))
 
-    def train(self, episodes: int = 200) -> None:
+    def train(self, episodes: int = 30, plot: bool = False) -> None:
+        """
+        Train the agent using Q-learning (bandit-style) and track preference error.
+        """
+        errors = []
+
+        for _ in range(episodes):
+            state, _ = self.env.reset()
+            persona = self.env.current_persona
+
+            action = self.choose_action(state)
+            _, reward, _, _, _ = self.env.step(action)
+
+            # Q-learning update
+            old_value = self.q_table[state, action]
+            self.q_table[state, action] = old_value + self.lr * (reward - old_value)
+
+            # Compute error between learned best action and ideal preference
+            best_action = np.argmax(self.q_table[state])
+            ideal_action = self.env.preferences[persona] - self.env.min_state
+            error = abs(best_action - ideal_action)
+
+            errors.append(error)
+
+        if plot:
+            # Plot learning curve
+            plt.figure()
+            plt.plot(errors)
+            plt.xlabel("Episode")
+            plt.ylabel("Absolute Preference Error")
+            plt.title("Learning Curve: Preference Error per Episode")
+            plt.grid(True)
+            plt.show()
+
+    def train2(self, episodes: int = 200) -> None:
         """
         Train the agent using Q-learning over a number of episodes.
 
@@ -115,6 +150,10 @@ class PreferenceRLAgent(SmartInput):
             _, reward, _, _, _ = self.env.step(action)
             old_value = self.q_table[state, action]
             self.q_table[state, action] = old_value + self.lr * (reward - old_value)
+
+        best_action = np.argmax(self.q_table[state])
+        ideal_action = self.preferences[self.env.current_persona] - self.env.min_state
+        error = abs(best_action - ideal_action)
 
     def get_state(self) -> dict[str, dict[int, float]]:
         """
