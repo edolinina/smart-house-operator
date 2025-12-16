@@ -137,24 +137,6 @@ class PreferenceRLAgent(SmartInput):
             plt.grid(True)
             plt.show()
 
-    def train2(self, episodes: int = 200) -> None:
-        """
-        Train the agent using Q-learning over a number of episodes.
-
-        Args:
-            episodes (int): Number of episodes to train.
-        """
-        for _ in range(episodes):
-            state, _ = self.env.reset()
-            action = self.choose_action(state)
-            _, reward, _, _, _ = self.env.step(action)
-            old_value = self.q_table[state, action]
-            self.q_table[state, action] = old_value + self.lr * (reward - old_value)
-
-        best_action = np.argmax(self.q_table[state])
-        ideal_action = self.preferences[self.env.current_persona] - self.env.min_state
-        error = abs(best_action - ideal_action)
-
     def get_state(self) -> dict[str, dict[int, float]]:
         """
         Convert Q-table to a probability distribution over possible values for each persona.
