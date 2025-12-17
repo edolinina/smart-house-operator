@@ -7,6 +7,12 @@ import copy
 import time
 from filelock import FileLock
 from collections import defaultdict
+from pathlib import Path
+
+# Force project root as working directory
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+os.chdir(PROJECT_ROOT)
+sys.path.insert(0, str(PROJECT_ROOT))
 
 from clients.preferences_rl import PreferenceEnv, PreferenceRLAgent
 from clients.weather_client import Weather
