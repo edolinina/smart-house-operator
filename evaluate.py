@@ -80,7 +80,7 @@ class SmartHouseEvaluator:
 
 
 if __name__ == "__main__":
-    config = load_config(f"{CONFIG_PATH}/evaluation_scenarios.yaml")
+    config = load_config("evaluation/evaluation_scenarios.yaml")
 
     evaluator = SmartHouseEvaluator()
 
