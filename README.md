@@ -188,5 +188,4 @@ The evaluation consists of two complementary parts designed to ensure reliabilit
 
 ### Evaluation Code & Data
 
-- **Evaluation dataset generation:** [`evaluate.py`](./evaluate.py)
-- **Results assessment:** [`evaluation/`](./evaluation/)
+The full evaluation details, including the dataset, results and assessment code, are available in the [`evaluation/`](./evaluation/) directory.
