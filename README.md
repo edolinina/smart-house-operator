@@ -1,5 +1,11 @@
 # Smart House Operator for Power Saving
 
+🔬 **Published in Applied Sciences (2026)**  
+Multi-Agent-Based Smart-Home Energy Management with Adaptive Reasoning 
+https://doi.org/10.3390/app16041896
+
+---
+
 The **Smart House Operator** is a multi-agent system designed to **optimize energy consumption** in a household while maintaining comfort and safety.
 It integrates intelligent agents for **Air Conditioning (AC)**, **Lighting**, **Fridge**, **Shutter** and a **Manager Agent** that coordinates decisions across the system.
 
